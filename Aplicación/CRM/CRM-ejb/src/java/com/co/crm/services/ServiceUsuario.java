@@ -5,6 +5,7 @@
  */
 package com.co.crm.services;
 
+import com.co.crm.Ifacades.PersonaFacadeLocal;
 import com.co.crm.Ifacades.UsuarioFacadeLocal;
 import com.co.crm.Iservices.ServiceUsuarioLocal;
 import com.co.crm.entities.Persona;
@@ -21,13 +22,17 @@ public class ServiceUsuario implements ServiceUsuarioLocal {
 
     @Inject
     private UsuarioFacadeLocal usuarioFacadeLocal;
+    @Inject
+    private PersonaFacadeLocal personaFacadeLocal;
 
     @Override
-    
+
     public void crearUsuario(Usuario usuario, Persona persona) {
 
-    usuarioFacadeLocal.create(usuario);
-    
+        
+        personaFacadeLocal.create(persona);
+        usuarioFacadeLocal.create(usuario);
+
     }
 
 }

@@ -10,13 +10,14 @@ import com.co.crm.entities.Rol;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
  * @author Andrés Peña Mantilla
  */
 @Stateless
-public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal{
+public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal {
 
     @PersistenceContext(unitName = "unidad_persistencia_general")
     private EntityManager em;
@@ -29,6 +30,15 @@ public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal{
     public RolFacade() {
         super(Rol.class);
     }
-    
-    
+
+    @Override
+    public Rol buscarRolPorNombre(String nombreRol) {
+        Query query = em.createNamedQuery("Select R.nombre FROM Rol R WHERE  P.nombre =:nombreRol");
+        query.setParameter("nombreRol", nombreRol);
+        Rol rolHallado;
+        rolHallado = (Rol) query.getSingleResult();
+
+        return rolHallado;
+    }
+
 }
