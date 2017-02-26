@@ -1,53 +1,40 @@
-CREATE TABLE public.persona
-(
-    persona_id integer NOT NULL DEFAULT nextval('persona_persona_id_seq'::regclass),
-    persona_identificacion character varying COLLATE pg_catalog."default",
-    persona_primernombre character varying COLLATE pg_catalog."default",
-    persona_segundonombre character varying COLLATE pg_catalog."default",
-    persona_primerapellido character varying COLLATE pg_catalog."default",
-    persona_segundoapellido character varying COLLATE pg_catalog."default",
+create table Persona(
+	persona_id serial primary key,
+    persona_identificacion varchar,
+    persona_primernombre varchar,
+    persona_segundonombre varchar,
+    persona_primerapellido varchar,
+    persona_segundoapellido varchar,
     persona_fechanacimiento date,
-    persona_direccion character varying COLLATE pg_catalog."default",
-    persona_telefonomovil character varying COLLATE pg_catalog."default",
-    persona_telefonofijo character varying COLLATE pg_catalog."default",
-    CONSTRAINT persona_pkey PRIMARY KEY (persona_id)
-)
+    persona_direccion varchar,
+    persona_telefonomovil varchar,
+    persona_telefonofijo varchar
+    
+);
 
-
-
-CREATE TABLE public.contacto
-(
-    contacto_id character varying COLLATE pg_catalog."default" NOT NULL,
+create table Contacto(
+	contacto_id serial primary key,
     persona_id integer,
-    contacto_estado character varying COLLATE pg_catalog."default",
-    CONSTRAINT contacto_pkey PRIMARY KEY (contacto_id),
-    CONSTRAINT contacto_persona FOREIGN KEY (persona_id)
-        REFERENCES public.persona (persona_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
+    contacto_estado varchar
+);
+create table Usuario(
+	usuario_id serial primary key,
+    usuario_nombre varchar,
+    usuario_password varchar,
+    persona_id int,
+    rol_id int
+);
+create table Rol(
+	rol_id int primary key,
+    nombre_rol varchar
+);
 
-CREATE TABLE public.usuario
-(
-    usuario_id character varying COLLATE pg_catalog."default" NOT NULL,
-    usuario_nombre character varying COLLATE pg_catalog."default",
-    usuario_password character varying COLLATE pg_catalog."default",
-    persona_id integer,
-    rol_id integer,
-    CONSTRAINT usuario_pkey PRIMARY KEY (usuario_id),
-    CONSTRAINT usuario_persona FOREIGN KEY (persona_id)
-        REFERENCES public.persona (persona_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION,
-    CONSTRAINT usuario_rol FOREIGN KEY (rol_id)
-        REFERENCES public.rol (rol_id) MATCH SIMPLE
-        ON UPDATE NO ACTION
-        ON DELETE NO ACTION
-)
 
-CREATE TABLE public.rol
-(
-    rol_id integer NOT NULL,
-    rol_nombre character varying COLLATE pg_catalog."default",
-    CONSTRAINT rol_pkey PRIMARY KEY (rol_id)
-)
+Alter table contacto 
+add constraint contacto_persona foreign key (persona_id) references persona (persona_id)
+
+Alter table usuario 
+add constraint usuario_persona foreign key (persona_id) references persona (persona_id)
+
+Alter table usuario 
+add constraint usuario_rol foreign key (rol_id) references rol (rol_id)
