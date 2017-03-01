@@ -5,29 +5,32 @@
  */
 package com.co.crm.facades;
 
-import com.co.crm.Ifacades.UsuarioFacadeLocal;
 import com.co.crm.entities.Usuario;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
  * @author Andrés Peña Mantilla
  */
 @Stateless
-public class UsuarioFacade extends AbstractFacade<Usuario> implements UsuarioFacadeLocal {
+public class UsuarioFacade extends PersistentManager<Usuario> {
 
-    @PersistenceContext(unitName = "unidad_persistencia_general")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+    /*Este método persiste un 'Usuario' en la base de datos*/
+    public void persistirUsuario(Usuario usuarioPersistir) {
+        persistir(usuarioPersistir);
     }
 
-    public UsuarioFacade() {
-        super(Usuario.class);
+    /*Este método retorna un 'Usuario' encontrado por el 'usuarioNombre'*/
+    public Usuario buscarUsuarioPorNombreUsuario(String usuarioNombre) {
+        Query q = em.createNamedQuery("Usuario.findByUsuarioNombre", Usuario.class).setParameter("usuarioNombre", usuarioNombre);
+        Usuario usuarioHallado = (Usuario) q.getSingleResult();
+        return usuarioHallado;
+    }
+
+    /*Este método actualiza un 'Usuario' en la base de datos*/
+    public void actualizarUsuario(Usuario usuarioModificar) {
+        actualizar(usuarioModificar);
     }
 
 }

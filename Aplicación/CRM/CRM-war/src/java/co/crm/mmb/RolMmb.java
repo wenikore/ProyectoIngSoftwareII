@@ -11,16 +11,17 @@ package co.crm.mmb;
  */
 public class RolMmb {
     
-    private String nombre;
-
-    /*Getters & Setters*/
     
-    public String getNombre() {
-        return nombre;
+    private String rolNombre;
+    
+    /*Getters & Setters*/
+
+    public String getRolNombre() {
+        return rolNombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setRolNombre(String rolNombre) {
+        this.rolNombre = rolNombre;
     }
     
     

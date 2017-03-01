@@ -32,7 +32,7 @@ public class Persona implements Serializable {
     private Long id;
 
     @Column(name = "persona_identificacion")
-    private String identifiacion;
+    private String identificacion;
 
     @Column(name = "persona_primerNombre")
     private String primerNombre;
@@ -72,13 +72,15 @@ public class Persona implements Serializable {
         this.id = id;
     }
 
-    public String getIdentifiacion() {
-        return identifiacion;
+    public String getIdentificacion() {
+        return identificacion;
     }
 
-    public void setIdentifiacion(String identifiacion) {
-        this.identifiacion = identifiacion;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
     }
+
+
 
     public String getPrimerNombre() {
         return primerNombre;

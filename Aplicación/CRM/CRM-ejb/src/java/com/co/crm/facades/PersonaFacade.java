@@ -5,29 +5,43 @@
  */
 package com.co.crm.facades;
 
-import com.co.crm.Ifacades.PersonaFacadeLocal;
 import com.co.crm.entities.Persona;
+import java.util.List;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
  * @author Andrés Peña Mantilla
  */
 @Stateless
-public class PersonaFacade extends AbstractFacade<Persona> implements PersonaFacadeLocal {
+public class PersonaFacade extends PersistentManager<Persona> {
 
-    @PersistenceContext(unitName = "unidad_persistencia_general")
-    private EntityManager em;
+    /*Este método persiste una 'Persona' en la base de datos*/
+    public void persistirPersona(Persona personaPersistir) {
+        persistir(personaPersistir);
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
     }
 
-    public PersonaFacade() {
-        super(Persona.class);
+    /*Este método actualiza una 'Persona' en la base de datos*/
+    public void actualizarPersona(Persona personaModificar) {
+        actualizar(personaModificar);
+
     }
 
+    /*Este método busca una 'Persona' por 'personaIdentificación'*/
+    public Persona buscarPersonaPorIdentificacion(String personaIdentificacion) {
+        Query q = em.createNamedQuery("Persona.findByPersonaIdentificacion", Persona.class).setParameter("personaIdentificacion", personaIdentificacion);
+        Persona personaHallada = (Persona) q.getSingleResult();
+
+        return personaHallada;
+    }
+
+    /*Este método busca una 'Persona' por nombre y/o Apellidos*/
+    public List<Persona> buscarPersonaPorNombreOApellidos(String textoBusqueda) {
+        Query q = em.createQuery("SELECT p FROM Persona p WHERE p.personaPrimernombre LIKE :txtBusqueda OR p.personaSegundonombre LIKE :txtBusqueda OR p.personaPrimerapellido LIKE :txtBusqueda OR p.personaSegundoapellido LIKE :txtBusqueda");
+        q.setParameter("txtBusqueda", "%" + textoBusqueda + "%");
+        return q.getResultList();
+
+    }
 }

@@ -5,11 +5,8 @@
  */
 package com.co.crm.facades;
 
-import com.co.crm.Ifacades.RolFacadeLocal;
 import com.co.crm.entities.Rol;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 /**
@@ -17,28 +14,23 @@ import javax.persistence.Query;
  * @author Andrés Peña Mantilla
  */
 @Stateless
-public class RolFacade extends AbstractFacade<Rol> implements RolFacadeLocal {
+public class RolFacade extends PersistentManager<Rol> {
 
-    @PersistenceContext(unitName = "unidad_persistencia_general")
-    private EntityManager em;
-
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+    /*Este método persiste un 'Rol' en la base de datos*/
+    public void persistirRol(Rol rolPersistir) {
+        persistir(rolPersistir);
     }
 
-    public RolFacade() {
-        super(Rol.class);
+
+    /*Este método actualiza un 'Rol' en la base de datos*/
+    public void actualizarUsuario(Rol rolModificar) {
+        actualizar(rolModificar);
     }
 
-    @Override
+    /*Este método busca un 'Rol' por rolNombre*/
     public Rol buscarRolPorNombre(String nombreRol) {
-        Query query = em.createNamedQuery("Select R.nombre FROM Rol R WHERE  P.nombre =:nombreRol");
-        query.setParameter("nombreRol", nombreRol);
-        Rol rolHallado;
-        rolHallado = (Rol) query.getSingleResult();
-
+        Query q = em.createNamedQuery("Rol.findByRolNombre", Rol.class).setParameter("rolNombre", nombreRol);
+        Rol rolHallado = (Rol) q.getSingleResult();
         return rolHallado;
-    }
-
+    }    
 }

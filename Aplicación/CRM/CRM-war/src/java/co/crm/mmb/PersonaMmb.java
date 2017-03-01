@@ -6,46 +6,28 @@
 package co.crm.mmb;
 
 import java.util.Date;
-import javax.validation.constraints.NotNull;
 
 /**
  *
- * @author Andres Peña Mantilla
+ * @author Andrés Peña Mantilla
  */
 public class PersonaMmb {
 
-    /*
-     Esta es una entidad identica al pojo 'Persona' 
-     la cual almacena en memoria las entradas desde 
-     la vista
-     */
-    private Long id;
-    @NotNull
+    
+    /*Estas son las variables que apuntan desde la vista a los  atributos de una 'Persona'*/
     private String identificacion;
-    @NotNull
     private String primerNombre;
     private String segundoNombre;
-    @NotNull
     private String primerApellido;
     private String segundoApellido;
-    @NotNull
     private Date fechaNacimiento;
-    @NotNull
     private String direccion;
-    @NotNull
     private String telefonoMovil;
     private String telefonoFijo;
-    @NotNull
     private String email;
 
+    
     /*Getters & Setters*/
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getIdentificacion() {
         return identificacion;
@@ -126,5 +108,6 @@ public class PersonaMmb {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    
+    
 }

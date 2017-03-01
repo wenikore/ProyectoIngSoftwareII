@@ -5,30 +5,25 @@
  */
 package com.co.crm.facades;
 
-import com.co.crm.Ifacades.ContactoFacadeLocal;
 import com.co.crm.entities.Contacto;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 /**
  *
  * @author Andrés Peña Mantilla
  */
 @Stateless
-public class ContactoFacade extends AbstractFacade<Contacto> implements ContactoFacadeLocal{
-    
-    @PersistenceContext(unitName = "unidad_persistencia_general")
-    private EntityManager em;
+public class ContactoFacade extends PersistentManager<Contacto> {
 
-    @Override
-    protected EntityManager getEntityManager() {
-        return em;
+    /*Este método persiste un 'Contacto' en la base de datos*/
+    public void persistirContacto(Contacto contactoPersistir) {
+        persistir(contactoPersistir);
     }
 
-    public ContactoFacade() {
-        super(Contacto.class);
+
+    /*Este método actualiza un 'Contacto' en la base de datos*/
+    public void actualizarUsuario(Contacto contactoModificar) {
+        actualizar(contactoModificar);
     }
-    
-    
+
 }

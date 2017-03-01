@@ -38,7 +38,6 @@ public class Usuario implements Serializable {
     private String password;
     
     
-    
     @OneToOne
     @JoinColumn(name="persona_id")
     private Persona persona;

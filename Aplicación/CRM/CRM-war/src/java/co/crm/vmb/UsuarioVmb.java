@@ -5,82 +5,112 @@
  */
 package co.crm.vmb;
 
-import co.crm.components.PersonaComp;
-import co.crm.components.RolComp;
-import co.crm.components.UsuarioComp;
-import com.co.crm.Iservices.ServiceRolLocal;
-import com.co.crm.Iservices.ServiceUsuarioLocal;
+import co.crm.mmb.PersonaMmb;
+import co.crm.mmb.RolMmb;
 import com.co.crm.entities.Persona;
-import com.co.crm.entities.Rol;
 import com.co.crm.entities.Usuario;
+import com.co.crm.services.UsuarioServicio;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.omnifaces.util.Messages;
 
 /**
  *
- * @author Andrés Peña Mantilla
+ * @author Andres Peña Mantilla
  */
 @Named
 @ViewScoped
 public class UsuarioVmb implements Serializable {
 
     @Inject
-    private ServiceUsuarioLocal serviceUsuarioLocal;
+    UsuarioServicio usuarioServicio;
 
-    @Inject
-    private ServiceRolLocal serviceRolLocal;
-
-    @Inject
-    private PersonaComp personaComp;
-    @Inject
-    private UsuarioComp usuarioComp;
-    @Inject
-    private RolComp rolComp;
+    private PersonaMmb personaComponente;
+    private RolMmb rolComponente;
+    private String usuarioNombre;
+    private String usuarioPassword;
+    private Usuario usuarioFormulario;
+    private Persona personaFormulario;
+    private String rolNombre;
 
     @PostConstruct
     public void init() {
+        personaComponente = new PersonaMmb();
+        rolComponente = new RolMmb();
+        usuarioFormulario = new Usuario();
+        personaFormulario = new Persona();
 
-        personaComp = new PersonaComp();
-        usuarioComp = new UsuarioComp();
-        rolComp = new RolComp();
     }
 
-    public void registrarUsuario() {
-        /*Se llena el objeto 'Persona' con los datos que entran desde el formulario web*/
-        Persona personaFormulario = new Persona();
-        personaFormulario.setIdentifiacion(personaComp.getPersonaMmb().getIdentificacion());
-        personaFormulario.setPrimerNombre(personaComp.getPersonaMmb().getPrimerNombre());
-        personaFormulario.setSegundoNombre(personaComp.getPersonaMmb().getSegundoNombre());
-        personaFormulario.setPrimerApellido(personaComp.getPersonaMmb().getPrimerApellido());
-        personaFormulario.setSegundoApellido(personaComp.getPersonaMmb().getSegundoApellido());
-        personaFormulario.setFechaNacimiento(personaComp.getPersonaMmb().getFechaNacimiento());
-        personaFormulario.setDireccion(personaComp.getPersonaMmb().getDireccion());
-        personaFormulario.setTelefonoMovil(personaComp.getPersonaMmb().getTelefonoMovil());
-        personaFormulario.setTelefonoFijo(personaComp.getPersonaMmb().getTelefonoFijo());
-        personaFormulario.setEmail(personaComp.getPersonaMmb().getEmail());
-
-        /*Se busca el Rol de la lista de nombres disponibles desde la vista */
-        Rol rolFormulario = new Rol();
-
-        rolFormulario = serviceRolLocal.buscarRolPorNombre(rolComp.getRolMmb().getNombre());
-
-        /*Se llena el objeto 'Usuario' con los datos que entran desde el formulario web*/
-        Usuario usuarioFormulario = new Usuario();
-        usuarioFormulario.setNombre(usuarioComp.getUsuarioMmb().getNombre());
-        usuarioFormulario.setPassword(usuarioComp.getUsuarioMmb().getPassword());
-        usuarioFormulario.setPersona(personaFormulario);
-        usuarioFormulario.setRol(rolFormulario);
-
+    /*Este método inserta un 'Usuario' en la base de datos*/
+    public void persistirUsuario() {
+        personaFormulario.setIdentificacion(personaComponente.getIdentificacion());
+        personaFormulario.setPrimerNombre(personaComponente.getPrimerNombre());
+        personaFormulario.setPrimerApellido(personaComponente.getPrimerApellido());
+        personaFormulario.setSegundoNombre(personaComponente.getSegundoNombre());
+        personaFormulario.setSegundoApellido(personaComponente.getSegundoApellido());
+        personaFormulario.setFechaNacimiento(personaComponente.getFechaNacimiento());
+        personaFormulario.setDireccion(personaComponente.getDireccion());
+        personaFormulario.setTelefonoFijo(personaComponente.getTelefonoFijo());
+        personaFormulario.setTelefonoMovil(personaComponente.getTelefonoMovil());
+        personaFormulario.setEmail(personaComponente.getEmail());
+        rolNombre = rolComponente.getRolNombre();
+        
         try {
-            serviceUsuarioLocal.crearUsuario(usuarioFormulario, personaFormulario);
+            /*Se envía al servicio  para ser persistido*/
+            usuarioServicio.persistirUsuarioServicio(usuarioNombre, usuarioPassword, personaFormulario, rolNombre);
+            Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "Se ha registrado un usuario en el sistema"));
             init();
-            System.out.println("USUARIO INSERTADO");
+            vaciarCamposUsuario();
+
         } catch (Exception e) {
-            System.out.println("ERROR" + e.getMessage());
+            Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al registrar", e.getMessage()));;
+
         }
 
+    }
+
+    /*Esta función vacía los campos de usuarioNombre y usuaarioPassword*/
+    public void vaciarCamposUsuario() {
+        this.usuarioNombre = "";
+        this.usuarioPassword = "";
+        this.rolNombre = "";
+    }
+
+    /*Getters & Setters*/
+    public PersonaMmb getPersonaComponente() {
+        return personaComponente;
+    }
+
+    public void setPersonaComponente(PersonaMmb personaComponente) {
+        this.personaComponente = personaComponente;
+    }
+
+    public RolMmb getRolComponente() {
+        return rolComponente;
+    }
+
+    public void setRolComponente(RolMmb rolComponente) {
+        this.rolComponente = rolComponente;
+    }
+
+    public String getUsuarioNombre() {
+        return usuarioNombre;
+    }
+
+    public void setUsuarioNombre(String usuarioNombre) {
+        this.usuarioNombre = usuarioNombre;
+    }
+
+    public String getUsuarioPassword() {
+        return usuarioPassword;
+    }
+
+    public void setUsuarioPassword(String usuarioPassword) {
+        this.usuarioPassword = usuarioPassword;
     }
 }

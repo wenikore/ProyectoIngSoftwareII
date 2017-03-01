@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -19,21 +21,23 @@ import javax.validation.constraints.NotNull;
  * @author Andrés Peña Mantilla
  */
 @Entity
-@Table(name="Rol")
+@Table(name = "Rol")
+@NamedQueries({
+    @NamedQuery(name = "Rol.findAll", query = "SELECT r FROM Rol r")
+    , @NamedQuery(name = "Rol.findByRolId", query = "SELECT r FROM Rol r WHERE r.id = :rolId")
+    , @NamedQuery(name = "Rol.findByRolNombre", query = "SELECT r FROM Rol r WHERE r.nombre = :rolNombre")})
 public class Rol implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @NotNull
-    @Column(name="rol_id")
+    @Column(name = "rol_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="rol_nombre")
+    @Column(name = "rol_nombre")
     private String nombre;
-    
-    
-    
+
     /*Getters & Setters*/
     public Long getId() {
         return id;
@@ -51,10 +55,6 @@ public class Rol implements Serializable {
         this.nombre = nombre;
     }
 
-    
-    
-    
-    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -79,5 +79,4 @@ public class Rol implements Serializable {
     public String toString() {
         return "com.co.crm.entities.Rol[ id=" + id + " ]";
     }
-    
 }
