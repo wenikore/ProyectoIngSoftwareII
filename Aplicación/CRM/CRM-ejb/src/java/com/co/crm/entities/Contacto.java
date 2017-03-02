@@ -21,24 +21,26 @@ import javax.validation.constraints.NotNull;
  * @author Andrés Peña Mantilla
  */
 @Entity
-@Table(name="Contacto")
+@Table(name = "Contacto")
 public class Contacto implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @NotNull
-    @Column(name="contacto_id")
+    @Column(name = "contacto_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="contacto_estado")
+    @Column(name = "contacto_estado")
     private String estado;
-    
+
+    @Column(name = "contacto_etapa")
+    private String etapa;
+
     @OneToOne
-    @JoinColumn(name="persona_id")
+    @JoinColumn(name = "persona_id")
     private Persona persona;
-    
-    
+
     /*Getters & Setters*/
     public Long getId() {
         return id;
@@ -64,10 +66,14 @@ public class Contacto implements Serializable {
         this.estado = estado;
     }
 
-    
-    
-    
-    
+    public String getEtapa() {
+        return etapa;
+    }
+
+    public void setEtapa(String etapa) {
+        this.etapa = etapa;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -92,5 +98,5 @@ public class Contacto implements Serializable {
     public String toString() {
         return "com.co.crm.entities.Contacto[ id=" + id + " ]";
     }
-    
+
 }

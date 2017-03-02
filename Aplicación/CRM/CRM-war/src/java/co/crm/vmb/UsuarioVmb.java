@@ -48,6 +48,7 @@ public class UsuarioVmb implements Serializable {
 
     /*Este método inserta un 'Usuario' en la base de datos*/
     public void persistirUsuario() {
+        /*Se asignan los valores de los atributos desde el formulario web para la entidad 'Persona'*/
         personaFormulario.setIdentificacion(personaComponente.getIdentificacion());
         personaFormulario.setPrimerNombre(personaComponente.getPrimerNombre());
         personaFormulario.setPrimerApellido(personaComponente.getPrimerApellido());

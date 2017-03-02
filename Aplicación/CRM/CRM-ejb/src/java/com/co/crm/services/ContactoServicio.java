@@ -8,7 +8,6 @@ package com.co.crm.services;
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Persona;
 import com.co.crm.facades.ContactoFacade;
-import java.util.Date;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -24,26 +23,19 @@ public class ContactoServicio {
     @Inject
     PersonaServicio personaServicio;
 
-    public void persistirContacroServicio(String contactoEstado, String identificacion, String primerNombre, String segundoNombre, String primerApellido, String segundoApellido, Date fechaNacimiento, String Direccion, String telefonoMovil, String telefonoFijo) {
-        Persona personaPersistir = new Persona();
+    public void persistirContactoServicio(String contactoEstado,String contactoEtapa,Persona persona) {
+
         Contacto contactoPersistir = new Contacto();
 
 
-        /*Se llena la 'Persona' del 'Contacto'*/
-        personaPersistir.setIdentificacion(identificacion);
-        personaPersistir.setPrimerNombre(primerNombre);
-        personaPersistir.setSegundoNombre(segundoNombre);
-        personaPersistir.setPrimerApellido(primerApellido);
-        personaPersistir.setSegundoApellido(segundoApellido);
-        personaPersistir.setFechaNacimiento(fechaNacimiento);
-        personaPersistir.setDireccion(Direccion);
-        personaPersistir.setTelefonoFijo(telefonoFijo);
-        personaPersistir.setTelefonoMovil(telefonoMovil);
-        personaServicio.persistirPersonaServicio(personaPersistir);
+        /*Se persiste la 'Persona' del 'Contacto'*/
+
+        personaServicio.persistirPersonaServicio(persona);
 
         /*Se llena el objeto 'Contacto' para que esté en contexto de Persistencia*/
-        contactoPersistir.setPersona(personaPersistir);
+        contactoPersistir.setPersona(persona);
         contactoPersistir.setEstado(contactoEstado);
+        contactoPersistir.setEtapa(contactoEtapa);
         /*Se persiste el 'Contacto'*/
         contactoFacade.persistirContacto(contactoPersistir);
     }
