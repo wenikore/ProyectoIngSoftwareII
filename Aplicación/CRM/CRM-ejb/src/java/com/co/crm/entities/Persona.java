@@ -37,9 +37,6 @@ public class Persona implements Serializable {
     @Column(name = "persona_primerNombre")
     private String primerNombre;
 
-    @Column(name = "persona_segundoNombre")
-    private String segundoNombre;
-
     @Column(name = "persona_primerApellido")
     private String primerApellido;
 
@@ -80,22 +77,12 @@ public class Persona implements Serializable {
         this.identificacion = identificacion;
     }
 
-
-
     public String getPrimerNombre() {
         return primerNombre;
     }
 
     public void setPrimerNombre(String primerNombre) {
         this.primerNombre = primerNombre;
-    }
-
-    public String getSegundoNombre() {
-        return segundoNombre;
-    }
-
-    public void setSegundoNombre(String segundoNombre) {
-        this.segundoNombre = segundoNombre;
     }
 
     public String getPrimerApellido() {
@@ -105,7 +92,6 @@ public class Persona implements Serializable {
     public void setPrimerApellido(String primerApellido) {
         this.primerApellido = primerApellido;
     }
-
    
 
     public String getSegundoApellido() {

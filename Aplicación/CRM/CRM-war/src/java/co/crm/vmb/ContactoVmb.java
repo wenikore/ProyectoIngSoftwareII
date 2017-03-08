@@ -48,13 +48,13 @@ public class ContactoVmb implements Serializable {
         personaFormulario.setIdentificacion(personaComponente.getIdentificacion());
         personaFormulario.setPrimerNombre(personaComponente.getPrimerNombre());
         personaFormulario.setPrimerApellido(personaComponente.getPrimerApellido());
-        personaFormulario.setSegundoNombre(personaComponente.getSegundoNombre());
         personaFormulario.setSegundoApellido(personaComponente.getSegundoApellido());
         personaFormulario.setFechaNacimiento(personaComponente.getFechaNacimiento());
         personaFormulario.setDireccion(personaComponente.getDireccion());
         personaFormulario.setTelefonoFijo(personaComponente.getTelefonoFijo());
         personaFormulario.setTelefonoMovil(personaComponente.getTelefonoMovil());
         personaFormulario.setEmail(personaComponente.getEmail());
+        
 
         /*Se asignan los valores de los atributos desde el formulario web para la entidad 'Contacto'*/
         contactoFormulario.setEstado(contactoComponente.getEstado());
@@ -63,7 +63,7 @@ public class ContactoVmb implements Serializable {
             /*Se envía al servicio  para ser persistido*/
 
             String contactoEstado = contactoFormulario.getEstado();
-            String contactoEtapa = contactoFormulario.getEstado();
+            String contactoEtapa = contactoFormulario.getEtapa();
             contactoServicio.persistirContactoServicio(contactoEstado, contactoEtapa, personaFormulario);
             Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "Se ha registrado un usuario en el sistema"));
             init();

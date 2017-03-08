@@ -17,7 +17,6 @@ public class PersonaMmb {
     /*Estas son las variables que apuntan desde la vista a los  atributos de una 'Persona'*/
     private String identificacion;
     private String primerNombre;
-    private String segundoNombre;
     private String primerApellido;
     private String segundoApellido;
     private Date fechaNacimiento;
@@ -43,14 +42,6 @@ public class PersonaMmb {
 
     public void setPrimerNombre(String primerNombre) {
         this.primerNombre = primerNombre;
-    }
-
-    public String getSegundoNombre() {
-        return segundoNombre;
-    }
-
-    public void setSegundoNombre(String segundoNombre) {
-        this.segundoNombre = segundoNombre;
     }
 
     public String getPrimerApellido() {

@@ -8,6 +8,7 @@ package com.co.crm.services;
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Persona;
 import com.co.crm.facades.ContactoFacade;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -39,4 +40,14 @@ public class ContactoServicio {
         /*Se persiste el 'Contacto'*/
         contactoFacade.persistirContacto(contactoPersistir);
     }
+    
+     /*Este método retorna la lista de 'Contactos' hallados por nombre y apellidos*/
+    public List<Contacto> buscarContactoPorNombreApellidoServicio(String txtBusqueda, int first, int pageSize) {
+        List<Contacto> contactosPorNombreApellido;
+        contactosPorNombreApellido = contactoFacade.buscarContactoPorNombreApellido(txtBusqueda, first, pageSize);
+        return contactosPorNombreApellido;
+    }
+    
+    
+    
 }
