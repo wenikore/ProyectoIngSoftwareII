@@ -1,27 +1,15 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/samuel/Documentos/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/login.xhtml</file>
-            <file>file:/home/samuel/Documentos/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/resources/css/style.css</file>
+            <file>file:/home/samuel/Documentos/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/administracion/agregarUsuario.xhtml</file>
+            <file>file:/home/samuel/Documentos/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/templates/principal.xhtml</file>
+            <file>file:/home/samuel/Documentos/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/administracion/index.xhtml</file>
+            <file>file:/home/samuel/Documentos/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/resources/css/custom.css</file>
+            <file>file:/home/samuel/Documentos/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/resources/css/custom.min.css</file>
+            <file>file:/home/samuel/Documentos/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/templates/header.xhtml</file>
         </group>
     </open-files>
 </project-private>
-=======
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/andre/OneDrive/Documentos/NetBeansProjects/CRM/CRM-war/src/java/co/crm/vmb/EditarUsuarioVmb.java</file>
-            <file>file:/C:/Users/andre/OneDrive/Documentos/NetBeansProjects/CRM/CRM-war/src/java/co/crm/vmb/ListarContactoVmb.java</file>
-            <file>file:/C:/Users/andre/OneDrive/Documentos/NetBeansProjects/CRM/CRM-war/src/java/co/crm/vmb/ListarUsuarioVmb.java</file>
-            <file>file:/C:/Users/andre/OneDrive/Documentos/NetBeansProjects/CRM/CRM-war/src/java/co/crm/mmb/PersonaMmb.java</file>
-            <file>file:/C:/Users/andre/OneDrive/Documentos/NetBeansProjects/CRM/CRM-war/src/java/co/crm/vmb/EditarContactoVmb.java</file>
-            <file>file:/C:/Users/andre/OneDrive/Documentos/NetBeansProjects/CRM/CRM-war/src/java/co/crm/vmb/UserSmb.java</file>
-        </group>
-    </open-files>
-</project-private>
->>>>>>> DesarrolloBackend

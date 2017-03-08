@@ -7,29 +7,32 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
-        <h:form id="formListarUsuariosId" style="width: 50%;height: 50%">
-            <br><p:inputText value="#{listarUsuarioVmb.textoBusqueda}"/></br>
-            <br><p:commandButton value="Buscar usuarios" 
-                                 actionListener="#{listarUsuarioVmb.buscarUsuario()}"
-                                 update="usuariosEncontradosId"/></br> 
-            <br></br>
-            <p:dataTable id="usuariosEncontradosId"
-                         value="#{listarUsuarioVmb.usuariosModelo}"
-                         var="usuario_encontrados_row"
-                         paginator="true"
-                         paginatorPosition="bottom" 
-                         lazy="true"
-                         rows="10" >
-                <p:column headerText="Primer Nombre">
-                    <h:outputText value="#{usuario_encontrados_row.persona.primerNombre}"/>
-                </p:column>
-                <p:column headerText="Primer Apellido">
-                    <h:outputText value="#{usuario_encontrados_row.persona.primerApellido}"/>
-                </p:column>
-                <p:column headerText="Segundo Apellido">
-                    <h:outputText value="#{usuario_encontrados_row.persona.segundoApellido}"/>
-                </p:column>
-            </p:dataTable>
-        </h:form> 
+        <div style="height: 80%; width: 100%">
+            <h1>Ver Usuarios</h1>
+            <h:form id="formListarUsuariosId" class="formularios">
+                <br><p:inputText value="#{listarUsuarioVmb.textoBusqueda}"/></br>
+                <br><p:commandButton value="Buscar usuarios" 
+                                     actionListener="#{listarUsuarioVmb.buscarUsuario()}"
+                                     update="usuariosEncontradosId"/></br> 
+                <br></br>
+                <p:dataTable id="usuariosEncontradosId"
+                             value="#{listarUsuarioVmb.usuariosModelo}"
+                             var="usuario_encontrados_row"
+                             paginator="true"
+                             paginatorPosition="bottom" 
+                             lazy="true"
+                             rows="10" >
+                    <p:column headerText="Primer Nombre">
+                        <h:outputText value="#{usuario_encontrados_row.persona.primerNombre}"/>
+                    </p:column>
+                    <p:column headerText="Primer Apellido">
+                        <h:outputText value="#{usuario_encontrados_row.persona.primerApellido}"/>
+                    </p:column>
+                    <p:column headerText="Segundo Apellido">
+                        <h:outputText value="#{usuario_encontrados_row.persona.segundoApellido}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form> 
+        </div>
     </ui:define>
 </ui:composition>

@@ -32,20 +32,6 @@
 
                         <div class="clearfix"></div>
 
-                        <!-- menu profile quick info -->
-                        <div class="profile clearfix">
-                            <div class="profile_pic">
-                                <img src="../resources/images/img.jpg" alt="..." class="img-circle profile_img" />
-                            </div>
-                            <div class="profile_info">
-                                <span>Bienvenido,</span>
-                                <h2>Samuel Villanueva</h2>
-                            </div>
-                        </div>
-                        <!-- /menu profile quick info -->
-
-                        <br />
-
                         <!-- sidebar menu -->
                         <ui:include src="sidebar.xhtml" id="sidebar"/>
                         <!-- /sidebar menu -->
@@ -65,9 +51,13 @@
                     <!-- top tiles -->
                     <ui:include src="header-metrics.xhtml" id="header-metrics" />
                     <!-- /top tiles -->
-                    <ui:insert name="content">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <ui:insert name="content">
 
-                    </ui:insert>
+                            </ui:insert>
+                        </div>
+                    </div>
                 </div>
                 <!-- contenido -->
 
@@ -76,6 +66,7 @@
                 <!-- /footer content -->
             </div>
         </div>
+        
         <!-- Bootstrap -->
         <script src="../resources/js/bootstrap.min.js"></script>
         <!-- Custom Theme Scripts -->

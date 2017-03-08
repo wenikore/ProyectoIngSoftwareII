@@ -7,38 +7,41 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
-        <h:form id="formAgregarUsuarioId" style="width: 50%;height: 50%">
+        <div style="height: 80%; width: 100%">
+        <h:form id="formAgregarUsuarioId" class="formularios">
             <p:defaultCommand target="saveButtomId"></p:defaultCommand>
             <h1>Registrar Usuario</h1>
+            <br/><br/><br/>
 
             <!--Este panelGrid hace referencia al formulario para capturar información-->
             <p:panelGrid style="width: 100%" >
                 <p:row>
                     <p:column>
-                        <p:outputLabel value="Identificación " />
+                        <p:outputLabel value="Identificación*" />
                     </p:column>
                     <p:column>
                         <p:inputText value="#{usuarioVmb.personaComponente.identificacion}"
-                                     placeholder="Campo requerido*"
-                                     id="usuarioIdentificacion"/>
+                                     
+                                     id="usuarioIdentificacion"
+                                     required="true"/>
                     </p:column>
                     <p:column>
-                        <p:outputLabel for="usuarioPrimerNombre" value="Primer Nombre"/>
+                        <p:outputLabel for="usuarioPrimerNombre" value="Primer Nombre*"/>
                     </p:column>
                     <p:column>
                         <p:inputText value="#{usuarioVmb.personaComponente.primerNombre}"
-                                     placeholder="Campo requerido*"
+                                     
                                      id="usuarioPrimerNombre"/>
                     </p:column>
                 </p:row>
                 <p:row>
                     <p:column>
-                        <p:outputLabel value="Primer Apellido"/>
+                        <p:outputLabel value="Primer Apellido*"/>
                     </p:column>
                     <p:column>
 
                         <p:inputText value="#{usuarioVmb.personaComponente.primerApellido}" 
-                                     placeholder="Campo requerido*"
+                                     
                                      id="usuarioPrimerApellido"/>
                     </p:column>
                 </p:row>
@@ -48,15 +51,15 @@
                     </p:column>
                     <p:column>
                         <p:inputText value="#{usuarioVmb.personaComponente.segundoApellido}" 
-                                     placeholder="Campo opcional*"
+                                     
                                      id="usuarioSegundoApellido"/>
                     </p:column>
                     <p:column>
-                        <p:outputLabel value="Fecha de Nacimiento" for="usuarioFechaNacimiento"/>
+                        <p:outputLabel value="Fecha de Nacimiento*" for="usuarioFechaNacimiento"/>
                     </p:column>
                     <p:column>
                         <p:calendar value="#{usuarioVmb.personaComponente.fechaNacimiento}" 
-                                    placeholder="Campo requerido*"
+                                    
                                     id="usuarioFechaNacimiento"/>
                     </p:column>
                 </p:row>
@@ -66,16 +69,16 @@
                     </p:column>
                     <p:column>
                         <p:inputText value="#{usuarioVmb.personaComponente.direccion}"
-                                     placeholder="Campo requerido*"
+                                     
                                      id="usuarioDireccion"/>
                     </p:column>
                     <p:column>
-                        <p:outputLabel value="Teléfono Móvil"
+                        <p:outputLabel value="Teléfono Móvil*"
                                        />
                     </p:column>
                     <p:column>
                         <p:inputText value="#{usuarioVmb.personaComponente.telefonoMovil}" 
-                                     placeholder="Campo requerido*"
+                                     required="true"
                                      id="usuarioTelefonoMovil"/>
                     </p:column>
                 </p:row>
@@ -85,49 +88,49 @@
                     </p:column>
                     <p:column>
                         <p:inputText value="#{usuarioVmb.personaComponente.telefonoFijo}" 
-                                     placeholder="Campo opcional*"
+                                     
                                      id="usuarioTelefonoFijo"/>
                     </p:column>
                     <p:column>
-                        <p:outputLabel value="Email"/>
+                        <p:outputLabel value="Email*"/>
                     </p:column>
                     <p:column>
                         <p:inputText value="#{usuarioVmb.personaComponente.email}"
-                                     placeholder="Campo requerido*"
+                                     required="true"
                                      id="usuarioEmail"/>
                     </p:column>
                 </p:row>
                 <p:row>
                     <p:column>
-                        <p:outputLabel value="Nombre Usuario"
+                        <p:outputLabel value="Nombre Usuario*"
                                        />
                     </p:column>
                     <p:column>
                         <p:inputText value="#{usuarioVmb.usuarioNombre}"
-                                     placeholder="Campo requerido*"
+                                     required="true"
                                      id="usuarioNombreUsuario"/>
                     </p:column>
                     <p:column>
-                        <p:outputLabel value="Contraseña"/>
+                        <p:outputLabel value="Contraseña*"/>
                     </p:column>
                     <p:column>
                         <p:password value="#{usuarioVmb.usuarioPassword}" 
-                                    placeholder="Campo requerido*"
+                                    required="true"
                                     id="usuarioContrasena"/>
                     </p:column>
                 </p:row>
                 <p:row>
                     <p:column>
-                        <p:outputLabel value="Repita la Contraseña"/>
+                        <p:outputLabel value="Repita la Contraseña*"/>
                     </p:column>
                     <p:column>
-                        <p:password/>
+                        <p:password required="true"/>
                     </p:column>
                     <p:column>
-                        <p:outputLabel value="Roles del Sistema"/>
+                        <p:outputLabel value="Roles del Sistema*"/>
                     </p:column>
                     <p:column>
-                        <p:selectOneMenu  value="#{usuarioVmb.rolComponente.rolNombre}" style="width: 80%">
+                        <p:selectOneMenu  value="#{usuarioVmb.rolComponente.rolNombre}" style="width: 80%" required="true">
                             <f:selectItem itemLabel="Seleccione Uno" itemValue="" noSelectionOption="true"/>
                             <f:selectItem itemLabel="Administrador" itemValue="Administrador" />
                         </p:selectOneMenu>
@@ -141,9 +144,10 @@
 
 
             <div align="center">
-                <p:commandButton value="Guardar Usuario" id="saveButtomId"
+                <p:commandButton class="btn btn-success" value="Guardar Usuario" id="saveButtomId"
                                  actionListener="#{usuarioVmb.persistirUsuario()}" update="formAgregarUsuarioId"/>
             </div>
         </h:form>
+            </div>
     </ui:define>
 </ui:composition>
