@@ -9,6 +9,7 @@ import com.co.crm.entities.Persona;
 import com.co.crm.entities.Rol;
 import com.co.crm.entities.Usuario;
 import com.co.crm.facades.UsuarioFacade;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -27,6 +28,7 @@ public class UsuarioServicio {
     @Inject
     RolServicio rolServicio;
 
+    /*Este método persiste un 'Usuario' en la base de datos*/
     public void persistirUsuarioServicio(String usuarioNombre, String usuarioPassword, Persona personaPersistir, String rolNombre) {
         Usuario usuarioPersistir = new Usuario();
 
@@ -36,7 +38,6 @@ public class UsuarioServicio {
         rolUsuario = rolServicio.buscarRolPorNombreServicio(rolNombre);
 
         /*Se llena persiste la  'Persona'*/
-
         personaServicio.persistirPersonaServicio(personaPersistir);
 
         /*Se llena el objeto 'Usuario' para que esté en contexto de Persistencia*/
@@ -46,6 +47,13 @@ public class UsuarioServicio {
         usuarioPersistir.setPersona(personaPersistir);
         /*Se persiste el 'Usuario'*/
         usuarioFacade.persistirUsuario(usuarioPersistir);
+    }
+
+    /*Este método retorna la lista de 'Usuarios' hallados por nombre y apellidos*/
+    public List<Usuario> buscarUsuarioPorNombreApellidoServicio(String txtBusqueda, int first, int pageSize) {
+        List<Usuario> usuariosPorNombreApellido;
+        usuariosPorNombreApellido = usuarioFacade.buscarUsuarioPorNombreApellido(txtBusqueda, first, pageSize);
+        return usuariosPorNombreApellido;
     }
 
 }

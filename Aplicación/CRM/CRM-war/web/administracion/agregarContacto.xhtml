@@ -8,24 +8,31 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
         <h:form id="formAgregarContactoId" style="width: 50%;height: 50%">
-                <h1>Registrar Contacto</h1>
-                <br><p:inputText value="#{contactoVmb.personaComponente.identificacion}" placeholder="Identificación"></p:inputText></br>
-                <br><p:inputText value="#{contactoVmb.personaComponente.primerNombre}" placeholder="Primer Nombre"></p:inputText></br>
-                <br><p:inputText value="#{contactoVmb.personaComponente.segundoNombre}" placeholder="Segundo Nombre"></p:inputText></br>
-                <br><p:inputText value="#{contactoVmb.personaComponente.primerApellido}" placeholder="Primer Apellido"></p:inputText></br>
-                <br><p:inputText value="#{contactoVmb.personaComponente.segundoApellido}" placeholder="Segundo Apellido"></p:inputText></br>
-                <br><p:calendar value="#{contactoVmb.personaComponente.fechaNacimiento}" placeholder="Fecha de Nacimiento"></p:calendar></br>
-                <br><p:inputText value="#{contactoVmb.personaComponente.direccion}" placeholder="Dirección"></p:inputText></br>
-                <br><p:inputText value="#{contactoVmb.personaComponente.telefonoFijo}" placeholder="Teléfono Fijo"></p:inputText></br>
-                <br><p:inputText value="#{contactoVmb.personaComponente.telefonoMovil}" placeholder="Teléfono Móvil"></p:inputText></br>
-                <br><p:selectOneMenu id="estadoContactoId"
-                                     value="#{contactoVmb.contactoComponente.estado}">
-                        <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
-                        <f:selectItems
-                            value="#{datosComunes.etapasContacto}">    
-                        </f:selectItems>
-                    </p:selectOneMenu></br>                     
-                <br><p:commandButton value="Guardar Contacto" actionListener="#{contactoVmb.persistirContacto()}"></p:commandButton></br>
+            <h1>Registrar Contacto</h1>
+            <br><p:inputText value="#{contactoVmb.personaComponente.identificacion}" placeholder="Identificación"></p:inputText></br>
+            <br><p:inputText value="#{contactoVmb.personaComponente.primerNombre}" placeholder="Primer Nombre"></p:inputText></br>
+            <br><p:inputText value="#{contactoVmb.personaComponente.primerApellido}" placeholder="Primer Apellido"></p:inputText></br>
+            <br><p:calendar value="#{contactoVmb.personaComponente.fechaNacimiento}" placeholder="Fecha de Nacimiento"></p:calendar></br>
+            <br><p:inputText value="#{contactoVmb.personaComponente.direccion}" placeholder="Dirección"></p:inputText></br>
+            <br><p:inputText value="#{contactoVmb.personaComponente.telefonoFijo}" placeholder="Teléfono Fijo"></p:inputText></br>
+            <br><p:inputText value="#{contactoVmb.personaComponente.telefonoMovil}" placeholder="Teléfono Móvil"></p:inputText></br>
+            <br><p:selectOneMenu id="etapaContactoId"
+                                 value="#{contactoVmb.contactoComponente.etapa}">
+                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
+                    <f:selectItems
+                        value="#{datosComunes.etapasContacto}">    
+                    </f:selectItems>
+                </p:selectOneMenu></br>  
+            <br><p:selectOneMenu id="estadoContactoId"
+                                 value="#{contactoVmb.contactoComponente.estado}">
+                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
+                    <f:selectItems
+                        value="#{datosComunes.estadosContacto}">    
+                    </f:selectItems>
+                </p:selectOneMenu></br>   
+
+
+            <br><p:commandButton value="Guardar Contacto" actionListener="#{contactoVmb.persistirContacto()}" update="formAgregarContactoId"></p:commandButton></br>
         </h:form> 
     </ui:define>
 </ui:composition>

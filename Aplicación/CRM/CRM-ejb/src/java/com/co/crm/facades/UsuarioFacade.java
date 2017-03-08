@@ -6,6 +6,7 @@
 package com.co.crm.facades;
 
 import com.co.crm.entities.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
 
@@ -33,4 +34,12 @@ public class UsuarioFacade extends PersistentManager<Usuario> {
         actualizar(usuarioModificar);
     }
 
+    /*Este método retorna una lista de 'Usuarios' filtrados por nombres y apellidos o identificacion*/
+    public List<Usuario> buscarUsuarioPorNombreApellido(String txtBusqueda , int startAt, int maxPerPage) {
+        Query q = em.createQuery("SELECT U FROM Usuario U WHERE U.persona.identificacion LIKE :txtBusqueda OR U.persona.primerNombre LIKE :txtBusqueda OR U.persona.primerApellido LIKE :txtBusqueda OR U.persona.segundoApellido LIKE :txtBusqueda OR U.persona.primerApellido LIKE :txtBusqueda");
+        q.setParameter("txtBusqueda", "%" + txtBusqueda + "%");
+        q.setFirstResult(startAt);
+        q.setMaxResults(maxPerPage);
+        return q.getResultList();
+    }
 }

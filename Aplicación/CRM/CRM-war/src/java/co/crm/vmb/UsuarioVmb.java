@@ -52,7 +52,6 @@ public class UsuarioVmb implements Serializable {
         personaFormulario.setIdentificacion(personaComponente.getIdentificacion());
         personaFormulario.setPrimerNombre(personaComponente.getPrimerNombre());
         personaFormulario.setPrimerApellido(personaComponente.getPrimerApellido());
-        personaFormulario.setSegundoNombre(personaComponente.getSegundoNombre());
         personaFormulario.setSegundoApellido(personaComponente.getSegundoApellido());
         personaFormulario.setFechaNacimiento(personaComponente.getFechaNacimiento());
         personaFormulario.setDireccion(personaComponente.getDireccion());
