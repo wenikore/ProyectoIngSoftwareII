@@ -14,6 +14,8 @@ public class ContactoMmb {
     /*Variables que apuntan desde la vista a los atributos de un 'Contacto'*/
     private String estado;
     private String etapa;
+    private Long id;
+    private Long personaId;
     /*Getters & Setters*/
 
     public String getEstado() {
@@ -30,6 +32,22 @@ public class ContactoMmb {
 
     public void setEtapa(String etapa) {
         this.etapa = etapa;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getPersonaId() {
+        return personaId;
+    }
+
+    public void setPersonaId(Long personaId) {
+        this.personaId = personaId;
     }
     
     

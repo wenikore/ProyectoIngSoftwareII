@@ -30,6 +30,13 @@ public class UserSmb implements Serializable {
     public UserSmb() {
     }
 
+    /*Esta función destruye los objetos en sesión*/
+    public void destroyObjectsInSession() {
+        this.contactoSession = null;
+        this.usuarioSession = null;
+
+    }
+
     /*Getters & Setters*/
     public Contacto getContactoSession() {
         return contactoSession;

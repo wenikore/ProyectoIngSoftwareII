@@ -70,6 +70,14 @@ public class ListarUsuarioVmb implements Serializable {
         init();
     }
 
+    /*Este método asigna la información  del row de la tabla a una variable en sesión*/
+    public String seleccionarUsuario(Usuario usuario)
+    {
+    usuarioSesion.setUsuarioSession(usuario); 
+    return "irDetalleUsuario";
+    }
+    
+    
     /*Getters & Setters*/
     public LazyDataModel<Usuario> getUsuariosModelo() {
         return usuariosModelo;

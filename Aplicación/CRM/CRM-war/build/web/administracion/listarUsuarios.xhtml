@@ -29,6 +29,9 @@
                 <p:column headerText="Segundo Apellido">
                     <h:outputText value="#{usuario_encontrados_row.persona.segundoApellido}"/>
                 </p:column>
+                <p:column>
+                    <p:commandButton value=" Detalle" action="#{listarUsuarioVmb.seleccionarUsuario(usuario_encontrados_row)}"/>
+                </p:column>
             </p:dataTable>
         </h:form> 
     </ui:define>

@@ -15,6 +15,7 @@ public class PersonaMmb {
 
     
     /*Estas son las variables que apuntan desde la vista a los  atributos de una 'Persona'*/
+    private Long id;
     private String identificacion;
     private String primerNombre;
     private String primerApellido;
@@ -28,6 +29,14 @@ public class PersonaMmb {
     
     /*Getters & Setters*/
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+   
     public String getIdentificacion() {
         return identificacion;
     }
