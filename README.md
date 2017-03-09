@@ -6,4 +6,9 @@
 --------------
 # ProyectoIngSoftwareII
 
+
+
 Este repositorio contiene el proyecto de la materia ingenieria de software II el cual contiene documentacion y codigo realizado en JEE con JSF+JPA+MYSQL
+
+es importante insertar esto en la tabla rol
+insert into rol values (1, 'Administrador');
