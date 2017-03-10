@@ -15,6 +15,7 @@ public class UsuarioMmb {
     private String nombre;
     private String password;
     private Long idPersona;
+    private Long idRol;
     
     /*Getters & Setters*/
 
@@ -48,6 +49,14 @@ public class UsuarioMmb {
 
     public void setIdPersona(Long idPersona) {
         this.idPersona = idPersona;
+    }
+
+    public Long getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(Long idRol) {
+        this.idRol = idRol;
     }
     
     

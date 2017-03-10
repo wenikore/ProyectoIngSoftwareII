@@ -21,6 +21,8 @@
             <br><p:inputText value="#{editarUsuarioVmb.personaComponente.telefonoMovil}" placeholder="Teléfono Móvil"></p:inputText></br>
             <br><p:inputText value="#{editarUsuarioVmb.personaComponente.direccion}" placeholder="Direccion"></p:inputText></br>
             <br><p:inputText value="#{editarUsuarioVmb.personaComponente.email}" placeholder="Email"></p:inputText></br>
+            
+            <p:commandButton value="Modificar Usuario" actionListener="#{editarUsuarioVmb.modificarUsuario()}" ></p:commandButton>
         </h:form> 
     </ui:define>
 </ui:composition>

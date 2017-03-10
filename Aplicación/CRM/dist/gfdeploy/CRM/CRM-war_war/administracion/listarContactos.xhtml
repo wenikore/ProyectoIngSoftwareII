@@ -7,7 +7,6 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
-<<<<<<< HEAD
         <h:form id="formListarContactosId" style="width: 50%;height: 50%">
             <br><p:inputText value="#{listarContactoVmb.textoBusqueda}" id="txtBusquedaContacto"/></br>
             <br><p:commandButton value="Buscar contactos" 
@@ -35,38 +34,5 @@
                 </p:column>
             </p:dataTable>
         </h:form> 
-=======
-        <div style="height: 80%; width: 100%">
-            <h1>Listar Contactos</h1>
-            <br/><br/><br/>
-            <h:form id="formListarContactosId" class="formularios">
-                <br><p:inputText value="#{listarContactoVmb.textoBusqueda}" id="txtBusquedaContacto"/></br>
-                <br><p:commandButton value="Buscar contactos" 
-                                     actionListener="#{listarContactoVmb.buscarContacto()}"
-                                     update="contactosEncontradosId,txtBusquedaContacto"/></br> 
-                <br></br>
-                <p:dataTable id="contactosEncontradosId"
-                             value="#{listarContactoVmb.contactosModelo}"
-                             var="contacto_encontrados_row"
-                             paginator="true"
-                             paginatorPosition="bottom" 
-                             lazy="true"
-                             rows="10" >
-                    <p:column headerText="Nombres">
-                        <h:outputText value="#{contacto_encontrados_row.persona.primerNombre}"/>
-                    </p:column>
-                    <p:column headerText="Primer Apellido">
-                        <h:outputText value="#{contacto_encontrados_row.persona.primerApellido}"/>
-                    </p:column>
-                    <p:column headerText="Segundo Apellido">
-                        <h:outputText value="#{contacto_encontrados_row.persona.segundoApellido}"/>
-                    </p:column>
-                    <p:column>
-                        <p:commandButton value="Editar" action="#{listarContactoVmb.seleccionarContacto(contacto_encontrados_row)}"></p:commandButton>
-                    </p:column>
-                </p:dataTable>
-            </h:form> 
-        </div>
->>>>>>> d93d92ec59cb056a40ffa2802318c53eb02792ef
     </ui:define>
 </ui:composition>

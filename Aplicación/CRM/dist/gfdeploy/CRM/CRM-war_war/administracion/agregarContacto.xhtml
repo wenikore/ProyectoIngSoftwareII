@@ -7,7 +7,6 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
-<<<<<<< HEAD
         <h:form id="formAgregarContactoId" style="width: 50%;height: 50%">
             <h1>Registrar Contacto</h1>
             <br><p:inputText value="#{contactoVmb.personaComponente.identificacion}" placeholder="Identificación"></p:inputText></br>
@@ -35,67 +34,5 @@
 
             <br><p:commandButton value="Guardar Contacto" actionListener="#{contactoVmb.persistirContacto()}" update="formAgregarContactoId"></p:commandButton></br>
         </h:form> 
-=======
-        <div style="height: 80%; width: 100%; margin: 0 auto;">
-            <h:form id="formAgregarContactoId" class="formularios">
-                <h1>Registrar Contacto</h1>
-                <br/><br/><br/>
-                <table class="table table-striped">
-                    <tbody>
-                        <tr>
-                            <td>Identificación*</td>
-                            <td><p:inputText value="#{contactoVmb.personaComponente.identificacion}" required="true"></p:inputText></td>
-                            <td>Primer Nombre*</td>
-                            <td><p:inputText value="#{contactoVmb.personaComponente.primerNombre}" required="true"></p:inputText></td>
-                        </tr>
-                        <tr>
-                            <td>Apellido</td>
-                            <td><p:inputText value="#{contactoVmb.personaComponente.primerApellido}"></p:inputText></td>
-                            <td>Fecha de nacimiento</td>
-                            <td><p:calendar value="#{contactoVmb.personaComponente.fechaNacimiento}"></p:calendar></td>
-                        </tr>
-                        <tr>
-                            <td>Dirección</td>
-                            <td><p:inputText value="#{contactoVmb.personaComponente.direccion}"></p:inputText></td>
-                            <td>Telefono fijo</td>
-                            <td><p:inputText value="#{contactoVmb.personaComponente.telefonoFijo}"></p:inputText></td>
-                        </tr>
-
-                        <tr>
-                            <td>Telefono movil</td>
-                            <td><p:inputText value="#{contactoVmb.personaComponente.telefonoMovil}"></p:inputText></td>
-                        </tr>
-
-                        <tr>
-                            <td>Etapa Contacto</td>
-                            <td>
-                                <p:selectOneMenu  id="etapaContactoId"
-                                                 value="#{contactoVmb.contactoComponente.etapa}">
-                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
-                                    <f:selectItems
-                                        value="#{datosComunes.etapasContacto}">    
-                                    </f:selectItems>
-                                </p:selectOneMenu>
-                            </td>
-                            <td>Estado Contacto</td>
-                            <td>
-
-                                <p:selectOneMenu id="estadoContactoId" 
-                                                 value="#{contactoVmb.contactoComponente.estado}">
-                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
-                                    <f:selectItems
-                                        value="#{datosComunes.estadosContacto}">    
-                                    </f:selectItems>
-                                </p:selectOneMenu>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div align='center'>
-                <br><p:commandButton class="btn btn-success" value="Guardar Contacto" actionListener="#{contactoVmb.persistirContacto()}" update="formAgregarContactoId"></p:commandButton></br>
-                </div>
-            </h:form> 
-        </div>
->>>>>>> d93d92ec59cb056a40ffa2802318c53eb02792ef
     </ui:define>
 </ui:composition>

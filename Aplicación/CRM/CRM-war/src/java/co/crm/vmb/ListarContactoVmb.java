@@ -37,7 +37,7 @@ public class ListarContactoVmb implements Serializable {
 
     @Inject
     UserSmb contactoSesion;
-    
+
     @PostConstruct
     public void init() {
         /*Este método busca un 'Contacto' por un texto de búsqueda*/
@@ -69,14 +69,12 @@ public class ListarContactoVmb implements Serializable {
         init();
     }
 
-    
     /*Este método asigna la información  del row de la tabla a una variable en sesión*/
-    public String seleccionarContacto(Contacto contacto)
-    {
-    contactoSesion.setContactoSession(contacto); 
-    return "irDetalleContacto";
+    public String seleccionarContacto(Contacto contacto) {
+        contactoSesion.setContactoSession(contacto);
+        return "irDetalleContacto";
     }
-    
+
     /*Getters & Setters*/
     public LazyDataModel<Contacto> getContactosModelo() {
         return contactosModelo;

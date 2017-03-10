@@ -16,14 +16,21 @@ import javax.inject.Inject;
  */
 @Stateless
 public class RolServicio {
+
     @Inject
     RolFacade rolFacade;
-    
-    public Rol buscarRolPorNombreServicio(String nombreRol)
-    {
-    Rol rolHallado;
-    rolHallado = rolFacade.buscarRolPorNombre(nombreRol);
-    return rolHallado;
+
+    /*Este método busca un "Rol" por nombre*/
+    public Rol buscarRolPorNombreServicio(String nombreRol) {
+        Rol rolHallado;
+        rolHallado = rolFacade.buscarRolPorNombre(nombreRol);
+        return rolHallado;
     }
-    
+
+    /*Este método busca un "Rol" por id*/
+    public Rol buscarRolPorId(Long idRol) {
+        Rol rolHallado;
+        rolHallado = rolFacade.buscarRolPorId(idRol);
+        return rolHallado;
+    }
 }

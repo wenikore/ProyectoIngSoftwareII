@@ -56,4 +56,9 @@ public class UsuarioServicio {
         return usuariosPorNombreApellido;
     }
 
+    /*Este método guarda los cambios en los campos en un 'Usuario'*/
+    public void actualizarUsuarioServicio(Usuario usuarioModificar) {
+        usuarioFacade.actualizarUsuario(usuarioModificar);
+    }
+
 }

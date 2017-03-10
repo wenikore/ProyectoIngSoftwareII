@@ -33,4 +33,11 @@ public class RolFacade extends PersistentManager<Rol> {
         Rol rolHallado = (Rol) q.getSingleResult();
         return rolHallado;
     }    
+    
+    public Rol buscarRolPorId(Long rolId)
+    {
+    Query q = em.createNamedQuery("Rol.findByRolId", Rol.class).setParameter("rolId", rolId);
+    Rol rolHallado = (Rol)q.getSingleResult();
+    return rolHallado;
+    }
 }

@@ -21,6 +21,7 @@ public class PersonaServicio {
     @Inject
     PersonaFacade personaFacade;
 
+    /*Este método persiste una 'Persona'*/
     public void persistirPersonaServicio(Persona personaPersistir) {
         personaFacade.persistirPersona(personaPersistir);
     }

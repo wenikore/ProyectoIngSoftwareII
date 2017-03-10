@@ -7,13 +7,18 @@ package co.crm.vmb;
 
 import co.crm.mmb.ContactoMmb;
 import co.crm.mmb.PersonaMmb;
+import co.crm.utilidades.ConvertidorEntidades;
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Persona;
+import com.co.crm.services.ContactoServicio;
+import com.co.crm.services.PersonaServicio;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.omnifaces.util.Messages;
 
 /**
  *
@@ -25,9 +30,15 @@ public class EditarContactoVmb implements Serializable {
 
     @Inject
     UserSmb contactoSesion;
+    @Inject
+    ConvertidorEntidades convertidor;
+    @Inject
+    ContactoServicio contactoServicio;
+    @Inject
+    PersonaServicio personaServicio;
 
-    private Contacto contacto;
-    private Persona persona;
+    private Contacto contactoModificar;
+    private Persona personaModificar;
 
     private PersonaMmb personaComponente;
     private ContactoMmb contactoComponente;
@@ -37,25 +48,46 @@ public class EditarContactoVmb implements Serializable {
         personaComponente = new PersonaMmb();
         contactoComponente = new ContactoMmb();
 
-        contacto = contactoSesion.getContactoSession();
+        contactoModificar = contactoSesion.getContactoSession();
 
-        personaComponente.setIdentificacion(contacto.getPersona().getIdentificacion());
-        personaComponente.setId(contacto.getPersona().getId());
-        personaComponente.setPrimerNombre(contacto.getPersona().getPrimerNombre());
-        personaComponente.setPrimerApellido(contacto.getPersona().getPrimerApellido());
-        personaComponente.setSegundoApellido(contacto.getPersona().getSegundoApellido());
-        personaComponente.setDireccion(contacto.getPersona().getDireccion());
-        personaComponente.setTelefonoFijo(contacto.getPersona().getTelefonoFijo());
-        personaComponente.setTelefonoMovil(contacto.getPersona().getTelefonoMovil());
-        personaComponente.setFechaNacimiento(contacto.getPersona().getFechaNacimiento());
-        contactoComponente.setEstado(contacto.getEstado());
-        contactoComponente.setEtapa(contacto.getEtapa());
-        contactoComponente.setId(contacto.getId());
-        contactoComponente.setPersonaId(contacto.getPersona().getId());
+        personaComponente.setIdentificacion(contactoModificar.getPersona().getIdentificacion());
+        personaComponente.setId(contactoModificar.getPersona().getId());
+        personaComponente.setPrimerNombre(contactoModificar.getPersona().getPrimerNombre());
+        personaComponente.setPrimerApellido(contactoModificar.getPersona().getPrimerApellido());
+        personaComponente.setSegundoApellido(contactoModificar.getPersona().getSegundoApellido());
+        personaComponente.setDireccion(contactoModificar.getPersona().getDireccion());
+        personaComponente.setTelefonoFijo(contactoModificar.getPersona().getTelefonoFijo());
+        personaComponente.setTelefonoMovil(contactoModificar.getPersona().getTelefonoMovil());
+        personaComponente.setFechaNacimiento(contactoModificar.getPersona().getFechaNacimiento());
+        contactoComponente.setEstado(contactoModificar.getEstado());
+        contactoComponente.setEtapa(contactoModificar.getEtapa());
+        contactoComponente.setId(contactoModificar.getId());
+        contactoComponente.setPersonaId(contactoModificar.getPersona().getId());
+    }
+
+    /*Este metodo realiza la modificacion del 'Contacto'*/
+    public void modificarContacto() {
+        try {
+            Persona persona;
+            Contacto contacto;
+            /*Llena las entidades*/
+            persona = convertidor.convertirPersonaComponenteToPersona(personaComponente);
+            contacto = convertidor.convertirContactoComponenteToContacto(contactoComponente);
+            contacto.setPersona(persona);
+
+            /*Se modifican las entidades*/
+            personaServicio.actualizarPersonaServicio(persona);
+            contactoServicio.actualizarContactoServicio(contacto);
+            Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_INFO, "Actualización exitosa", "Se ha actualizado un contacto en el sistema"));
+
+        } catch (Exception e) {
+            Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al registrar", e.getMessage()));;
+
+        }
+
     }
 
     /*Getters & Setters*/
-
     public PersonaMmb getPersonaComponente() {
         return personaComponente;
     }

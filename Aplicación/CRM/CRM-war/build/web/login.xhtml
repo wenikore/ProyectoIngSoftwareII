@@ -4,59 +4,54 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui" xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui">
     <f:view contentType="text/html">
         <h:head>
             <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            
-            <h:outputStylesheet library="css" name="bootstrap.min.css"/>
-            <h:outputStylesheet library="css" name="font-awesome.min.css"/>
-            <h:outputStylesheet library="css" name="style.css"/>
-            <h:outputStylesheet library="css" name="nprogress.css"/>
-            <h:outputStylesheet library="css" name="animate.min.css"/>
-            <h:outputStylesheet library="css" name="custom.css"/>
-            
-        <title>CRM</title>
+            <h:outputStylesheet name="./css/default.css"/>
+            <h:outputStylesheet name="./css/cssLayout.css"/>
+            <title>CRM</title>
         </h:head>
-        <body class="login">
-            <div>
-                <a class="hiddenanchor" id="signup"></a>
-                <a class="hiddenanchor" id="signin"></a>
-
-                <div class="login_wrapper">
-                    <div class="animate form login_form">
-                        <section class="login_content">
-                            <h:form>
-                                <h1>Iniciar sesión</h1>
-                                <div>
-                                    <p:inputText class="form-control" placeholder="correo" required="true" />
-                                </div>
-                                <div>
-                                    <p:password  class="form-control" placeholder="Password" required="true" />
-                                </div>
-                                <div>
-                                    <p:link class="btn btn-default submit" outcome="faces/administracion/index.xhtml">Ingresar</p:link>
-                                    
-                                </div>
-
-                                <div class="clearfix"></div>
-
-                                <div class="separator">
-                                    <div class="clearfix"></div>
-                                    <br />
-
-                                    <div>
-                                        <div style="text-align: center"><img  src="resources/images/icono_Crm.png" ></img></div>
-                                        <p>©2017 Todos los Derechos reservados.</p>
-                                    </div>
-                                </div>
-                            </h:form>
-                        </section>
-                    </div>
-
-                </div>
-            </div>
-        </body>
+        <h:body>
+            <h:form id="formLogeo">
+                <p:panel header="Bienvenido" style="width: 500px;  right: 50%; margin-right: -250px; position: absolute; top: 50%; margin-top: -150px;">
+                    <p:messages globalOnly="true" autoUpdate="true"></p:messages>
+                    <p:panelGrid style="width: 100%;">
+                        <p:row>
+                            <p:column>
+                                <p:inputText id="email" 
+                                             placeholder="email" style="width: 100%;"></p:inputText>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:message for="email"></p:message>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:password id="password" 
+                                            placeholder="contraseña" style="width: 100%"></p:password>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:message for="password"></p:message>
+                            </p:column>
+                        </p:row>
+                        <p:row>
+                            <p:column>
+                                <p:outputLabel value="Mantener sesión abierta."></p:outputLabel>
+                            </p:column>
+                            <p:column>
+                                <p:selectBooleanCheckbox value=""></p:selectBooleanCheckbox>
+                            </p:column>
+                        </p:row>
+                    </p:panelGrid>
+                    <p:commandButton value="Ingresar" 
+                                     update="formLogeo"></p:commandButton>
+                </p:panel>
+            </h:form>
+        </h:body>
     </f:view>
 </html>
