@@ -60,8 +60,9 @@
 
                                 <p:selectOneMenu id="estadoContactoId" 
                                                  value="#{editarSeguimientoVmb.contactoComponente.estado}">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
                                     <f:selectItems
-                                        value="#{datosComunes.estadosContacto}" itemDisabled="true">    
+                                        value="#{datosComunes.estadosContacto}">    
                                     </f:selectItems>
                                 </p:selectOneMenu>
                             </td>
@@ -81,7 +82,7 @@
 
 
                 <div align='center'>
-                    <br><p:commandButton class="btn btn-success" value="Actualizar Seguimiento" actionListener="#{editarSeguimientoVmb.actualizarSeguimientoContacto}"></p:commandButton></br>
+                    <br><p:commandButton class="btn btn-success" value="Actualizar Seguimiento" update="formModificarSeguimientoId"></p:commandButton></br>
                 </div>
             </h:form> 
         </div>

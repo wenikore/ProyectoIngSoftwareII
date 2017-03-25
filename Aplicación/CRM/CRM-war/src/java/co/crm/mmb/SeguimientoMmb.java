@@ -16,7 +16,6 @@ public class SeguimientoMmb {
     private Long id;
     private String descripcion;
     private String motivo;
-    private Long contactoId;
 
     /*Getters & Setters*/
     public Long getId() {
@@ -42,14 +41,4 @@ public class SeguimientoMmb {
     public void setMotivo(String motivo) {
         this.motivo = motivo;
     }    
-
-    public Long getContactoId() {
-        return contactoId;
-    }
-
-    public void setContactoId(Long contactoId) {
-        this.contactoId = contactoId;
-    }
-    
-    
 }

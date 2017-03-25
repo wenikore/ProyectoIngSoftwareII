@@ -56,7 +56,6 @@ public class ListaSeguimientosVmb implements Serializable {
         try {
             Date fechaCreacion = new Date();
             seguimientoNuevo = new Seguimiento();
-            seguimientoNuevo.setMotivo(seguimientoComponente.getMotivo());
             seguimientoNuevo.setContacto(contacto);
             seguimientoNuevo.setDescripcion(seguimientoComponente.getDescripcion());
             seguimientoNuevo.setFechaCreacion(fechaCreacion);

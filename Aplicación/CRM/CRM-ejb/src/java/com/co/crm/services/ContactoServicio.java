@@ -59,19 +59,12 @@ public class ContactoServicio {
         contactosHallados = contactoFacade.buscarContactoPorIdentificacionAndEstado(txtBusqueda);
         return contactosHallados;
     }
-
+   
     /*Este método busca un único 'Contacto' por identificacion*/
-    public Long buscarContactoPorCedulaServicio(String identificacion) {
-        Contacto contacto;
-        contacto = contactoFacade.buscarContactoPorIdentificacion(identificacion);
-        return contacto.getId();
-    }
-
-    /*Este método busca un 'Contacto' por id*/
-    public Contacto buscarPorIdServicio(Long id) {
-        Contacto contacto;
-        contacto = contactoFacade.buscarPorId(id);
-        return contacto;
-    }
-
+    public Long buscarContactoPorCedulaServicio(String identificacion)
+    {
+    Contacto contacto;
+    contacto = contactoFacade.buscarContactoPorIdentificacion(identificacion);
+    return contacto.getId();
+    }    
 }

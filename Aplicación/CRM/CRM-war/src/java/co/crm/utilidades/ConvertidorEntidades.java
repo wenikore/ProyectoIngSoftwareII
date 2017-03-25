@@ -14,8 +14,6 @@ import com.co.crm.entities.Persona;
 import com.co.crm.entities.Rol;
 import com.co.crm.entities.Seguimiento;
 import com.co.crm.entities.Usuario;
-import com.co.crm.services.ContactoServicio;
-import com.co.crm.services.PersonaServicio;
 import com.co.crm.services.RolServicio;
 import java.io.Serializable;
 import javax.ejb.Stateless;
@@ -30,10 +28,6 @@ public class ConvertidorEntidades implements Serializable {
 
     @Inject
     RolServicio rolServicio;
-    @Inject
-    PersonaServicio personaServicio;
-    @Inject
-    ContactoServicio contactoServicio;
 
     private Persona personaModificar;
     private Contacto contactoModificar;
@@ -60,11 +54,13 @@ public class ConvertidorEntidades implements Serializable {
     /*Esta funcion convierte un 'ContactoMmb' en un 'Contacto'*/
     public Contacto convertirContactoComponenteToContacto(ContactoMmb contactoComponente) {
         /*Se pasa la informacion del componente al objeto*/
+
         contactoModificar = new Contacto();
+
         contactoModificar.setEstado(contactoComponente.getEstado());
         contactoModificar.setEtapa(contactoComponente.getEtapa());
         contactoModificar.setId(contactoComponente.getId());
-        contactoModificar.setPersona(personaServicio.buscarPorIdServicio(contactoComponente.getPersonaId()));
+
         return contactoModificar;
     }
 
@@ -91,7 +87,6 @@ public class ConvertidorEntidades implements Serializable {
         seguimientoComponente.setDescripcion(seguimiento.getDescripcion());
         seguimientoComponente.setMotivo(seguimiento.getMotivo());
         seguimientoComponente.setId(seguimiento.getId());
-        seguimientoComponente.setContactoId(seguimiento.getContacto().getId());
         return seguimientoComponente;
     }
 
@@ -116,26 +111,9 @@ public class ConvertidorEntidades implements Serializable {
     public Seguimiento converterToSeguimientoComponente(SeguimientoMmb seguimientoComponente) {
         Seguimiento seguimiento = new Seguimiento();
         seguimiento.setDescripcion(seguimientoComponente.getDescripcion());
-        seguimiento.setMotivo(seguimientoComponente.getMotivo());
+        seguimiento.setMotivo(seguimiento.getMotivo());
         seguimiento.setId(seguimientoComponente.getId());
-        seguimiento.setContacto(contactoServicio.buscarPorIdServicio(seguimientoComponente.getContactoId()));
 
         return seguimiento;
-    }
-
-    /**/
-    /**
-     *
-     * @param contacto
-     * @return
-     */
-    public ContactoMmb converterContactoToContactoMmb(Contacto contacto) {
-        ContactoMmb contactoComponente = new ContactoMmb();
-        contactoComponente.setEstado(contacto.getEstado());
-        contactoComponente.setEtapa(contacto.getEtapa());
-        contactoComponente.setId(contacto.getId());
-        contactoComponente.setPersonaId(contacto.getPersona().getId());
-
-        return contactoComponente;
     }
 }
