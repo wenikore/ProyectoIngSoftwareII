@@ -12,12 +12,15 @@ import co.crm.utilidades.ConvertidorEntidades;
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Persona;
 import com.co.crm.entities.Seguimiento;
+import com.co.crm.services.ContactoServicio;
 import com.co.crm.services.SeguimientoServicio;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.omnifaces.util.Messages;
 
 /**
  *
@@ -30,10 +33,11 @@ public class EditarSeguimientoVmb implements Serializable {
     @Inject
     SeguimientoServicio seguimientoServicio;
     @Inject
+    ContactoServicio contactoServicio;
+    @Inject
     UserSmb session;
     @Inject
     ConvertidorEntidades converter;
-    
 
     private Seguimiento seguimiento;
     private Persona persona;
@@ -48,19 +52,18 @@ public class EditarSeguimientoVmb implements Serializable {
         seguimiento = session.getSeguimiento();
         persona = session.getSeguimiento().getContacto().getPersona();
         contacto = session.getSeguimiento().getContacto();
-        
+
         /*Construccion de Componentes*/
         seguimientoComponente = new SeguimientoMmb();
         contactoComponente = new ContactoMmb();
         personaComponente = new PersonaMmb();
         /*Asignacion de información a  los componentes*/
-        seguimientoComponente = converter.converterSeguimientoEntitySeguimientoMmb(seguimiento);   
+        seguimientoComponente = converter.converterSeguimientoEntitySeguimientoMmb(seguimiento);
         personaComponente = converter.converterToPersonaComponente(persona);
+        contactoComponente = converter.converterContactoToContactoMmb(contacto);
     }
 
-    
     /*Getters & Setters*/
-
     public SeguimientoMmb getSeguimientoComponente() {
         return seguimientoComponente;
     }
@@ -83,16 +86,24 @@ public class EditarSeguimientoVmb implements Serializable {
 
     public void setPersonaComponente(PersonaMmb personaComponente) {
         this.personaComponente = personaComponente;
-    }   
-    
-    public void actualizarSeguimientoContacto()
-    {
-    Contacto contactoActualizar;
-    contactoActualizar = converter.convertirContactoComponenteToContacto(contactoComponente);
-    seguimiento = converter.converterToSeguimientoComponente(seguimientoComponente);
-    seguimiento.setContacto(contactoActualizar);
-    
-    
     }
-    
+
+    public void actualizarSeguimientoContacto() {
+
+        try {
+            Contacto contactoActualizar;
+            Seguimiento seguimientoActualizar;
+            contactoActualizar = converter.convertirContactoComponenteToContacto(contactoComponente);
+            seguimientoActualizar = converter.converterToSeguimientoComponente(seguimientoComponente);
+            contactoServicio.actualizarContactoServicio(contactoActualizar);
+            seguimientoServicio.actualizarSeguimientoServicio(seguimientoActualizar);
+            Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_INFO, "Actualización exitosa", "Se ha actualizado el seguimiento de venta"));
+
+        } catch (Exception e) {
+            Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al registrar", e.getMessage()));;
+
+        }
+
+    }
+
 }

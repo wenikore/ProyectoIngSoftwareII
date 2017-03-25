@@ -11,12 +11,12 @@ package com.co.crm.enums;
  */
 public enum TipoSeguimiento {
     
-        EI("Envío Información"), 
-        CT("Contacto Telefónico"),
-        CP("Cita Presencial"),
-        CV("Cita Virtual"),
-        CPo("Contacto Posterior"),
-        O("Otro");
+        Envio_Informacion("Envío Información"), 
+        Contacto_Telefonico("Contacto Telefónico"),
+        Cita_Presencial("Cita Presencial"),
+        Cita_Virtual("Cita Virtual"),
+        Contacto_Posterior("Contacto Posterior"),
+        Otro("Otro");
 
 
     private final String value;

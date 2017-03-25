@@ -59,6 +59,7 @@ public class EditarContactoVmb implements Serializable {
         personaComponente.setTelefonoFijo(contactoModificar.getPersona().getTelefonoFijo());
         personaComponente.setTelefonoMovil(contactoModificar.getPersona().getTelefonoMovil());
         personaComponente.setFechaNacimiento(contactoModificar.getPersona().getFechaNacimiento());
+        personaComponente.setEmail(contactoModificar.getPersona().getEmail());
         contactoComponente.setEstado(contactoModificar.getEstado());
         contactoComponente.setEtapa(contactoModificar.getEtapa());
         contactoComponente.setId(contactoModificar.getId());

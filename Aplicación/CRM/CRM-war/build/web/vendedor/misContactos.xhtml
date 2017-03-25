@@ -13,7 +13,21 @@
                          var="contacto_encontrados_row"
                          paginator="true"
                          rows="10" 
-                         style="width: 100%">
+                         style="width: 100%"
+                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                         >
+                <f:facet name="{Exporters}">
+                    <h:commandLink>
+                        <!--<p:graphicImage name="../images/xls.png" width="24"/>-->
+                        <img src="../resources/images/xls.png" width="15px" style="margin-left:10px;"/>
+                        <p:dataExporter type="xls" target="contactosEncontradosId" fileName="contactosVendedor" />
+                    </h:commandLink>
+
+                  <!--  <h:commandLink>
+                        <img src="../resources/images/pdf.png" width="15px" style="margin-left:5px"/>
+                        <p:dataExporter type="pdf" target="contactosEncontradosId" fileName="contactosVendedor"/>
+                    </h:commandLink> -->
+                </f:facet>
                 <p:column headerText="Nombres">
                     <h:outputText value="#{contacto_encontrados_row.persona.primerNombre}"/>
                 </p:column>
@@ -23,14 +37,17 @@
                 <p:column headerText="Móvil">
                     <h:outputText value="#{contacto_encontrados_row.persona.telefonoMovil}"/>
                 </p:column>
-                <p:column headerText="Editar Contacto">
-                    <p:commandButton value="Editar" action="#{listarContactosVmb.seleccionarContacto(contacto_encontrados_row)}"></p:commandButton>
+                <p:column headerText="Estado">
+                    <p:outputLabel value="#{contacto_encontrados_row.estado}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="Eliminar Contacto">
-                    <p:commandButton value="Eliminar"  actionListener="#{listarContactosVmb.eliminarContacto()}" update="contactosEncontradosId"></p:commandButton>                   
+                <p:column headerText="Editar" style="align-items: center">
+                    <p:commandLink value="Editar" style="font-style: oblique" action="#{listarContactosVmb.seleccionarContacto(contacto_encontrados_row)}"></p:commandLink>
+                </p:column>
+                <p:column headerText="Eliminar">
+                    <p:commandLink value="Eliminar"  style="font-style: oblique" actionListener="#{listarContactosVmb.eliminarContacto}" update="contactosEncontradosId"></p:commandLink>                   
                 </p:column>
                 <p:column>
-                    <p:commandButton value="Nuevo Seguimiento" action="#{listarContactosVmb.nuevoSeguimiento(contacto_encontrados_row)}"></p:commandButton>
+                    <p:commandLink value="Nuevo Seguimiento" style="font-style: oblique; " action="#{listarContactosVmb.nuevoSeguimiento(contacto_encontrados_row)}"></p:commandLink>
                 </p:column>
             </p:dataTable>
         </h:form>

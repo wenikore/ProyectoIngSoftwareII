@@ -11,8 +11,8 @@ package com.co.crm.enums;
  */
 public enum EstadoContacto {
 
-    A("Activo"),
-    E("Eliminado");
+    Activo("Activo"),
+    Eliminado("Eliminado");
 
     private final String value;
 
