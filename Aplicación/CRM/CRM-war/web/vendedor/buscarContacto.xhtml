@@ -8,6 +8,13 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
         <h:form id="formListarContactosId">
+            <h1>Busqueda de contactos</h1>
+            <br/>
+            <div style="text-align: center">
+                <img src="../resources/images/contact.ico" style="height: 9em" />
+            </div>
+
+            <br/><br/>
             <br><p:inputText value="#{listarContactosVmb.textoBusqueda}" id="txtBusquedaContacto"/></br>
             <br><p:commandButton value="Buscar contactos" 
                                  actionListener="#{listarContactosVmb.buscarContactoPorCedula()}"
@@ -24,14 +31,14 @@
                 <f:facet name="{Exporters}">
                     <h:commandLink>
                         <!--<p:graphicImage name="../images/xls.png" width="24"/>-->
-                        <img src="../resources/images/xls.png" width="15px" style="margin-left:10px;"/>
+                        <img src="../resources/images/xls.ico" width="30px" style="margin-left:10px;"/>
                         <p:dataExporter type="xls" target="contactosEncontradosId" fileName="detalleContacto" />
                     </h:commandLink>
 
-                   <!--  <h:commandLink>
-                        <img src="../resources/images/pdf.png" width="15px" style="margin-left:5px"/>
-                        <p:dataExporter type="pdf" target="contactosEncontradosId" fileName="detalleContacto"/>
-                    </h:commandLink> -->
+                    <!--  <h:commandLink>
+                         <img src="../resources/images/pdf.png" width="15px" style="margin-left:5px"/>
+                         <p:dataExporter type="pdf" target="contactosEncontradosId" fileName="detalleContacto"/>
+                     </h:commandLink> -->
                 </f:facet>
                 <p:column headerText="Nombres">
                     <h:outputText value="#{contacto_encontrados_row.persona.primerNombre}"/>

@@ -7,6 +7,13 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
+
+        <h1>Contactos a cargo</h1>
+        <br/>
+        <div style="text-align: center">
+            <img src="../resources/images/contact.ico" style="height: 9em" />
+        </div>
+        <br/><br/>
         <h:form id="formContactosPorVendedorId">
             <p:dataTable id="contactosEncontradosId"
                          value="#{contactosByVendedorVmb.contactos}"
@@ -19,14 +26,14 @@
                 <f:facet name="{Exporters}">
                     <h:commandLink>
                         <!--<p:graphicImage name="../images/xls.png" width="24"/>-->
-                        <img src="../resources/images/xls.png" width="15px" style="margin-left:10px;"/>
+                        <img src="../resources/images/xls.ico" width="30px" style="margin-left:10px;"/>
                         <p:dataExporter type="xls" target="contactosEncontradosId" fileName="contactosVendedor" />
                     </h:commandLink>
 
-                  <!--  <h:commandLink>
-                        <img src="../resources/images/pdf.png" width="15px" style="margin-left:5px"/>
-                        <p:dataExporter type="pdf" target="contactosEncontradosId" fileName="contactosVendedor"/>
-                    </h:commandLink> -->
+                    <!--  <h:commandLink>
+                          <img src="../resources/images/pdf.png" width="15px" style="margin-left:5px"/>
+                          <p:dataExporter type="pdf" target="contactosEncontradosId" fileName="contactosVendedor"/>
+                      </h:commandLink> -->
                 </f:facet>
                 <p:column headerText="Nombres">
                     <h:outputText value="#{contacto_encontrados_row.persona.primerNombre}"/>
@@ -40,14 +47,14 @@
                 <p:column headerText="Estado">
                     <p:outputLabel value="#{contacto_encontrados_row.estado}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="Editar" style="align-items: center">
-                    <p:commandLink value="Editar" style="font-style: oblique" action="#{listarContactosVmb.seleccionarContacto(contacto_encontrados_row)}"></p:commandLink>
+                <p:column headerText="" style="align-items: center">
+                    <p:commandLink  style="text-align: center" action="#{listarContactosVmb.seleccionarContacto(contacto_encontrados_row)}"><img style="width: 30px; height: 30px; margin-left: 5em" src="../resources/images/edit.png"/></p:commandLink>
                 </p:column>
-                <p:column headerText="Eliminar">
-                    <p:commandLink value="Eliminar"  style="font-style: oblique" actionListener="#{listarContactosVmb.eliminarContacto}" update="contactosEncontradosId"></p:commandLink>                   
+                <p:column headerText="">
+                    <p:commandLink  actionListener="#{listarContactosVmb.eliminarContacto}" update="contactosEncontradosId"><img style="width: 30px; height: 30px; margin-left: 5em" src="../resources/images/Recycle.png"/></p:commandLink>                   
                 </p:column>
                 <p:column>
-                    <p:commandLink value="Nuevo Seguimiento" style="font-style: oblique; " action="#{listarContactosVmb.nuevoSeguimiento(contacto_encontrados_row)}"></p:commandLink>
+                    <p:commandLink action="#{listarContactosVmb.nuevoSeguimiento(contacto_encontrados_row)}"><img style="width: 30px; height: 30px; margin-left: 5em" src="../resources/images/agregar.png"/></p:commandLink>
                 </p:column>
             </p:dataTable>
         </h:form>
