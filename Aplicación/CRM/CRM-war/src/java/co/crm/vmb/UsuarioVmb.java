@@ -8,7 +8,9 @@ package co.crm.vmb;
 import co.crm.mmb.PersonaMmb;
 import co.crm.mmb.RolMmb;
 import com.co.crm.entities.Persona;
+import com.co.crm.entities.SupervisorVendedor;
 import com.co.crm.entities.Usuario;
+import com.co.crm.services.SupervisorVendedorServicio;
 import com.co.crm.services.UsuarioServicio;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
@@ -28,6 +30,10 @@ public class UsuarioVmb implements Serializable {
 
     @Inject
     UsuarioServicio usuarioServicio;
+    @Inject
+    SupervisorVendedorServicio supervisorVendedorServicio;
+    @Inject
+    UserSmb session;
 
     private PersonaMmb personaComponente;
     private RolMmb rolComponente;
@@ -36,9 +42,11 @@ public class UsuarioVmb implements Serializable {
     private Usuario usuarioFormulario;
     private Persona personaFormulario;
     private String rolNombre;
+    private SupervisorVendedor supervisorVendedor;
 
     @PostConstruct
     public void init() {
+        supervisorVendedor = new SupervisorVendedor();
         personaComponente = new PersonaMmb();
         rolComponente = new RolMmb();
         usuarioFormulario = new Usuario();
@@ -48,6 +56,10 @@ public class UsuarioVmb implements Serializable {
 
     /*Este método inserta un 'Usuario' en la base de datos*/
     public void persistirUsuario() {
+        String identificacion;
+        Long supervisorId;
+        Long vendedorId;
+
         /*Se asignan los valores de los atributos desde el formulario web para la entidad 'Persona'*/
         personaFormulario.setIdentificacion(personaComponente.getIdentificacion());
         personaFormulario.setPrimerNombre(personaComponente.getPrimerNombre());
@@ -59,11 +71,23 @@ public class UsuarioVmb implements Serializable {
         personaFormulario.setTelefonoMovil(personaComponente.getTelefonoMovil());
         personaFormulario.setEmail(personaComponente.getEmail());
         rolNombre = rolComponente.getRolNombre();
-        
+
         try {
+
             /*Se envía al servicio  para ser persistido*/
             usuarioServicio.persistirUsuarioServicio(usuarioNombre, usuarioPassword, personaFormulario, rolNombre);
+
+            /*Se asigna en la tabla VendedorContacto el nuevo Contacto*/
+            identificacion = personaFormulario.getIdentificacion();
+            supervisorId = session.getUsuarioSession().getId();
+            vendedorId = usuarioServicio.buscarUsuarioPorIdentificacionServicio(identificacion);
+
+            supervisorVendedor.setSupervisorId(supervisorId);
+            supervisorVendedor.setVendedorId(vendedorId);
+
+            supervisorVendedorServicio.persistirSupervisorVendedorServicio(supervisorVendedor);
             Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso", "Se ha registrado un usuario en el sistema"));
+
             init();
             vaciarCamposUsuario();
 

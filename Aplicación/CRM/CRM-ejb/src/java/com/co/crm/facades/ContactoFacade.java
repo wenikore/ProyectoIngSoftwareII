@@ -45,4 +45,15 @@ public class ContactoFacade extends PersistentManager<Contacto> {
         q.setParameter("Estado", "A");
         return q.getResultList();
     }
+    
+     public Contacto buscarContactoPorIdentificacion(String identificacion)
+     {
+     Query q = em.createQuery("SELECT C FROM Contacto C WHERE C.persona.identificacion = :identificacion");
+     q.setParameter("identificacion", identificacion);
+     Contacto contacto;
+     contacto = (Contacto) q.getSingleResult();
+     return contacto;
+     }
+    
+    
 }

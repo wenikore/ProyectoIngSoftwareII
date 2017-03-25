@@ -33,6 +33,9 @@ public abstract class PersistentManager<T> implements Serializable {
     public void actualizar(T obj) {
         em.merge(obj);
     }
+    
+    
+    
 }
 
 

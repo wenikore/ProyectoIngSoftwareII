@@ -6,6 +6,7 @@
 package co.crm.vmb;
 
 import com.co.crm.entities.Contacto;
+import com.co.crm.entities.Seguimiento;
 import com.co.crm.entities.Usuario;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
@@ -23,6 +24,10 @@ public class UserSmb implements Serializable {
     private Contacto contactoSession;
     /*Usuario en sesión*/
     private Usuario usuarioSession;
+    /*Nombre del Usuario en sesión*/
+    private String nombreUsuario;
+    /*Seguimiento en sesión*/
+    private Seguimiento seguimiento;
 
     /**
      * Creates a new instance of UserSmb
@@ -52,6 +57,26 @@ public class UserSmb implements Serializable {
 
     public void setUsuarioSession(Usuario usuarioSession) {
         this.usuarioSession = usuarioSession;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public void nombreUsuarioEnSesion() {
+        nombreUsuario = usuarioSession.getPersona().getPrimerNombre() + " " + usuarioSession.getPersona().getPrimerApellido() + " " + usuarioSession.getPersona().getSegundoApellido();
+    }
+
+    public Seguimiento getSeguimiento() {
+        return seguimiento;
+    }
+
+    public void setSeguimiento(Seguimiento seguimiento) {
+        this.seguimiento = seguimiento;
     }
 
 }

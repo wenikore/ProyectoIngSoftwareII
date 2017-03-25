@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+        <h:form id="formContactosPorVendedorId">
+            <p:dataTable id="contactosEncontradosId"
+                         value="#{contactosByVendedorVmb.contactos}"
+                         var="contacto_encontrados_row"
+                         paginator="true"
+                         rows="10" 
+                         style="width: 100%">
+                <p:column headerText="Nombres">
+                    <h:outputText value="#{contacto_encontrados_row.persona.primerNombre}"/>
+                </p:column>
+                <p:column headerText="Primer Apellido">
+                    <h:outputText value="#{contacto_encontrados_row.persona.primerApellido}"/>
+                </p:column>
+                <p:column headerText="Móvil">
+                    <h:outputText value="#{contacto_encontrados_row.persona.telefonoMovil}"/>
+                </p:column>
+                <p:column headerText="Editar Contacto">
+                    <p:commandButton value="Editar" action="#{listarContactosVmb.seleccionarContacto(contacto_encontrados_row)}"></p:commandButton>
+                </p:column>
+                <p:column headerText="Eliminar Contacto">
+                    <p:commandButton value="Eliminar"  actionListener="#{listarContactosVmb.eliminarContacto()}" update="contactosEncontradosId"></p:commandButton>                   
+                </p:column>
+                <p:column>
+                    <p:commandButton value="Nuevo Seguimiento" action="#{listarContactosVmb.nuevoSeguimiento(contacto_encontrados_row)}"></p:commandButton>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

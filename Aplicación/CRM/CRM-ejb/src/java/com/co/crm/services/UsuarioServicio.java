@@ -61,4 +61,22 @@ public class UsuarioServicio {
         usuarioFacade.actualizarUsuario(usuarioModificar);
     }
 
+    /**
+     *
+     * @param nombre
+     * @param contrasenia
+     * @return Usuario
+     */
+    public Usuario buscarUsuarioPorNombreContraseniaServicio(String nombre, String contrasenia) {
+        Usuario usuarioHallado;
+        usuarioHallado = usuarioFacade.buscarUsuarioPorNombreContrasenia(nombre, (DigestUtils.md5Hex(contrasenia)));
+        return usuarioHallado;
+    }
+
+    /*Este método retorna un 'Usuario' por identidificacion*/
+    public Long buscarUsuarioPorIdentificacionServicio(String identificacion) {
+        Usuario usuario;
+        usuario = usuarioFacade.buscarUsuarioPorIdentificacion(identificacion);
+        return usuario.getId();
+    }
 }

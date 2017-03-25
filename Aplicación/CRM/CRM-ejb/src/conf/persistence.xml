@@ -6,6 +6,10 @@
     <class>com.co.crm.entities.Rol</class>
     <class>com.co.crm.entities.Persona</class>
     <class>com.co.crm.entities.Usuario</class>
+    <class>com.co.crm.entities.Seguimiento</class>
+    <class>com.co.crm.entities.SupervisorVendedor</class>
+    <class>com.co.crm.entities.Tarea</class>
+    <class>com.co.crm.entities.VendedorContacto</class>
     <exclude-unlisted-classes>true</exclude-unlisted-classes>
     <properties>
     </properties>

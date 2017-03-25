@@ -69,7 +69,6 @@ public class ListarContactosVmb implements Serializable {
                 contactoServicio.actualizarContactoServicio(contactosHallados.get(i));
                 contactosHallados.remove(i);
             }
-            System.out.println("El tamaño es -->" + contactosHallados.size());
             Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminación exitosa", "Se ha eliminado un cliente en el sistema"));
 
         } catch (Exception e) {
@@ -77,6 +76,13 @@ public class ListarContactosVmb implements Serializable {
 
     }
 
+    public String nuevoSeguimiento(Contacto contacto)
+    {
+    contactoSesion.setContactoSession(contacto);
+    return "irNuevoSeguimiento";
+    }
+    
+    
     /*Getters & Setters*/
     public List<Contacto> getContactosHallados() {
         return contactosHallados;

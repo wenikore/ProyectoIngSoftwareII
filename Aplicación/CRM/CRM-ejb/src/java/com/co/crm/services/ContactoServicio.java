@@ -8,7 +8,6 @@ package com.co.crm.services;
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Persona;
 import com.co.crm.facades.ContactoFacade;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -60,5 +59,12 @@ public class ContactoServicio {
         contactosHallados = contactoFacade.buscarContactoPorIdentificacionAndEstado(txtBusqueda);
         return contactosHallados;
     }
-    
+   
+    /*Este método busca un único 'Contacto' por identificacion*/
+    public Long buscarContactoPorCedulaServicio(String identificacion)
+    {
+    Contacto contacto;
+    contacto = contactoFacade.buscarContactoPorIdentificacion(identificacion);
+    return contacto.getId();
+    }    
 }

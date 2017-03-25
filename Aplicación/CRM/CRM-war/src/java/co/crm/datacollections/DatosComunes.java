@@ -7,6 +7,7 @@ package co.crm.datacollections;
 
 import com.co.crm.enums.EstadoContacto;
 import com.co.crm.enums.EtapaContacto;
+import com.co.crm.enums.TipoSeguimiento;
 import java.io.Serializable;
 import java.util.LinkedHashMap;
 import javax.annotation.PostConstruct;
@@ -26,11 +27,13 @@ public class DatosComunes implements Serializable {
 
     private LinkedHashMap<String, EtapaContacto> etapasContacto;
     private LinkedHashMap<String, EstadoContacto> estadosContacto;
+    private LinkedHashMap<String, TipoSeguimiento> tipoSeguimiento;
 
     @PostConstruct
     public void init() {
         cargarEtapasContacto();
         cargarEstadosContacto();
+        cargarTiposSeguimiento();
     }
 
     /*Carga las Etapas que puede tener un 'Contacto' y los convierte a un 'LinkedHashMap'*/
@@ -52,6 +55,17 @@ public class DatosComunes implements Serializable {
 
     }
 
+     /*Carga los Tipos de seguimiento y los convierte en un 'LinkedHasMap'*/
+    public void cargarTiposSeguimiento() {
+        tipoSeguimiento = new LinkedHashMap<>();
+        for (TipoSeguimiento object : TipoSeguimiento.values()) {
+            tipoSeguimiento.put(object.getValue(), object);
+
+        }
+
+    }
+    
+    
     /*Getters & Setters*/
     public LinkedHashMap<String, EtapaContacto> getEtapasContacto() {
         return etapasContacto;
@@ -68,5 +82,16 @@ public class DatosComunes implements Serializable {
     public void setEstadosContacto(LinkedHashMap<String, EstadoContacto> estadosContacto) {
         this.estadosContacto = estadosContacto;
     }
+
+    public LinkedHashMap<String, TipoSeguimiento> getTipoSeguimiento() {
+        return tipoSeguimiento;
+    }
+
+    public void setTipoSeguimiento(LinkedHashMap<String, TipoSeguimiento> tipoSeguimiento) {
+        this.tipoSeguimiento = tipoSeguimiento;
+    }
+    
+    
+    
 
 }

@@ -12,11 +12,6 @@ package com.co.crm.enums;
 public enum EtapaContacto {
   
         CI("Contacto Inicial"), 
-        EI("Envío Información"), 
-        CT("Contacto Telefónico"),
-        CP("Cita Presencial"),
-        CV("Cita Virtual"),
-        CPo("Contacto Posterior"),
         C("Cliente"),
         DB("Dado de baja");
 
