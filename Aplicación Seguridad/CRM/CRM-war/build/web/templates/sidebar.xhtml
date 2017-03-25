@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+
+    <!-- menu profile quick info -->
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="../resources/images/img.jpg" alt="..." class="img-circle profile_img" />
+        </div>
+        <div class="profile_info">
+            <span>Bienvenido, </span>
+            <h2><h:outputLabel value="#{userSmb.nombreUsuario}" style="color: #ffffff"></h:outputLabel></h2>
+        </div>
+    </div>
+    <!-- /menu profile quick info -->
+
+    <br />
+    <h:form>
+        <p:panelMenu>
+            <p:submenu label="Contactos" icon="ui-icon-person">
+                <p:menuitem value="Búsqueda de Contacto" action="#{navigationVmb.buscarContacto}" icon="ui-icon-search"></p:menuitem>
+                <p:menuitem value="Registrar un Contacto" action="#{navigationVmb.nuevoContacto}" icon="ui-icon-disk"></p:menuitem>
+            </p:submenu>
+            <p:submenu label="Vendedores" rendered="#{(userSmb.usuarioSession.rol.nombre == 'Administrador') or (userSmb.usuarioSession.rol.nombre == 'Supervisor')}">
+                <p:menuitem value="Busqueda de Vendedores" action="#{navigationVmb.buscarUsuario}" icon="ui-icon-search"></p:menuitem>
+                <p:menuitem value="Registrar un Vendedor" action="#{navigationVmb.nuevoUsuario}" icon="ui-icon-disk"></p:menuitem>
+            </p:submenu>
+            <p:submenu label="Supervisores" rendered="#{userSmb.usuarioSession.rol.nombre == 'Administrador'}">
+                <p:menuitem value="Busqueda de Vendedores" action="#{navigationVmb.buscarUsuario}" icon="ui-icon-search"></p:menuitem>
+                <p:menuitem value="Registrar un Vendedor" action="#{navigationVmb.nuevoUsuario}" icon="ui-icon-disk"></p:menuitem>
+            </p:submenu>
+            <p:submenu label="Cerrar Sesión" >
+                <p:menuitem value="Salir" action="#{loginVmb.logout}" icon="ui-icon-circle-close"></p:menuitem>
+            </p:submenu>
+        </p:panelMenu>
+    </h:form>
+</ui:composition>
