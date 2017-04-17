@@ -10,7 +10,8 @@
             <file>file:/D:/Proyecto%20Ing/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/WEB-INF/faces-config.xml</file>
         </group>
         <group>
-            <file>file:/C:/Users/samuel/Documents/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/vendedor/seguimientosContacto.xhtml</file>
+            <file>file:/C:/Users/samuel/Documents/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/templates/principal.xhtml</file>
+            <file>file:/C:/Users/samuel/Documents/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/administracion/menuAdministracion.xhtml</file>
         </group>
     </open-files>
 </project-private>
