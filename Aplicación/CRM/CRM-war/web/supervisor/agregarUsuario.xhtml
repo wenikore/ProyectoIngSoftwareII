@@ -145,7 +145,7 @@
 
                 <div align="center">
                     <p:commandButton class="btn btn-success" value="Guardar Usuario" id="saveButtomId"
-                                     actionListener="#{usuarioVmb.persistirUsuario()}" update="formAgregarUsuarioId"/>
+                                     onclick="return validationGeneric()"  actionListener="#{usuarioVmb.persistirUsuario()}" update="formAgregarUsuarioId"/>
                 </div>
             </h:form>
         </div>
