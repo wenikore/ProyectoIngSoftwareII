@@ -7,80 +7,35 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
-        
-        <h1>Editar contacto</h1>
-        <br/>
-        <div style="text-align: center">
-            <img src="../resources/images/contact.ico" style="height: 9em" />
-        </div>
-        <br/><br/>
-            
-            <h:form id="formContactoUsuarioId" style="width: 50%;height: 50%">
-
-                <table class="table table-striped">
-                    <tbody>
-                        <tr>
-                            <td>Identificación*</td>
-                            <td><p:inputText value="#{editarContactoVmb.personaComponente.identificacion}" 
-
-                                             disabled="true"></p:inputText></td>
-                            <td>Primer Nombre*</td>
-                            <td><p:inputText value="#{editarContactoVmb.personaComponente.primerNombre}"></p:inputText></td>
-                        </tr>
-                        <tr>
-                            <td>Apellido</td>
-                            <td><p:inputText value="#{editarContactoVmb.personaComponente.primerApellido}"></p:inputText></td>
-                            <td>Segundo apellido</td>
-
-                            <td><p:inputText value="#{editarContactoVmb.personaComponente.segundoApellido}"></p:inputText></td>
-                        </tr>
-                        <tr>
-                            <td>Fecha de Nacimiento</td>
-                            <td><p:calendar value="#{editarContactoVmb.personaComponente.fechaNacimiento}" ></p:calendar></td>
-                            <td>Dirección</td>
-                            <td><p:inputText value="#{editarContactoVmb.personaComponente.direccion}"></p:inputText></td>
-                        </tr>
-
-                        <tr>
-                            <td>Telefono Fijo</td>
-                            <td><p:inputText value="#{editarContactoVmb.personaComponente.telefonoFijo}"></p:inputText></td>
-                            <td>Teléfono Móvil</td>
-                            <td><p:inputText value="#{editarContactoVmb.personaComponente.telefonoMovil}"></p:inputText></td>
-                        </tr>
-
-                        <tr>
-                            <td>Email</td>
-                            <td>
-                                <p:inputText value="#{editarContactoVmb.personaComponente.email}" placeholder="Email"></p:inputText>
-                            </td>
-                            <td>Tipo Contacto</td>
-                            <td>
-                                <p:selectOneMenu id="etapaContactoId"
-                                                 value="#{editarContactoVmb.contactoComponente.etapa}">
-                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
-                                    <f:selectItems
-                                        value="#{datosComunes.etapasContacto}">    
-                                    </f:selectItems>
-                                </p:selectOneMenu>
-
-                            </td>
-                            <td>Estado Contacto</td>
-                            <td>
-                                <p:selectOneMenu id="estadoContactoId"
-                                                 value="#{editarContactoVmb.contactoComponente.estado}">
-                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
-                                    <f:selectItems
-                                        value="#{datosComunes.estadosContacto}">    
-                                    </f:selectItems>
-                                </p:selectOneMenu>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div align='center'>
-                    <p:commandButton class="btn btn-success" value="Modificar Contacto" actionListener="#{editarContactoVmb.modificarContacto()}"></p:commandButton>
-                </div>
-            </h:form> 
-        
+        <h:form id="formContactoUsuarioId" style="width: 50%;height: 50%">
+            <h1>Editar Contacto</h1>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.identificacion}" 
+                             placeholder="Identificación"
+                             disabled="true"></p:inputText></br>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.primerNombre}" placeholder="Primer Nombre"></p:inputText></br>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.primerApellido}" placeholder="Primer Apellido"></p:inputText></br>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.segundoApellido}" placeholder="Segundo Apellido"></p:inputText></br>
+            <br><p:calendar value="#{editarContactoVmb.personaComponente.fechaNacimiento}" placeholder="Fecha de Nacimiento"></p:calendar></br>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.direccion}" placeholder="Dirección"></p:inputText></br>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.telefonoFijo}" placeholder="Teléfono Fijo"></p:inputText></br>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.telefonoMovil}" placeholder="Teléfono Móvil"></p:inputText></br>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.direccion}" placeholder="Direccion"></p:inputText></br>
+            <br><p:inputText value="#{editarContactoVmb.personaComponente.email}" placeholder="Email"></p:inputText></br>
+            <br><p:selectOneMenu id="etapaContactoId"
+                                 value="#{editarContactoVmb.contactoComponente.etapa}">
+                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
+                    <f:selectItems
+                        value="#{datosComunes.etapasContacto}">    
+                    </f:selectItems>
+                </p:selectOneMenu></br>  
+            <br><p:selectOneMenu id="estadoContactoId"
+                                 value="#{editarContactoVmb.contactoComponente.estado}">
+                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
+                    <f:selectItems
+                        value="#{datosComunes.estadosContacto}">    
+                    </f:selectItems>
+                </p:selectOneMenu></br>
+            <p:commandButton value="Modificar Contacto" actionListener="#{editarContactoVmb.modificarContacto()}"></p:commandButton>
+        </h:form> 
     </ui:define>
 </ui:composition>

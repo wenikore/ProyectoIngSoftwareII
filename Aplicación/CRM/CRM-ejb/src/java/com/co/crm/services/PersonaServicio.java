@@ -46,11 +46,4 @@ public class PersonaServicio {
         personaFacade.actualizarPersona(personaActualizar);
     }
 
-    /*Este método Busca una persona por id*/
-    public Persona buscarPorIdServicio(Long id) {
-        Persona persona;
-        persona = personaFacade.buscarPorId(id);
-        return persona;
-    }
-
 }

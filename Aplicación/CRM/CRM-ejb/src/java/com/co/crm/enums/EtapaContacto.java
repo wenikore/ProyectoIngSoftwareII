@@ -11,9 +11,9 @@ package com.co.crm.enums;
  */
 public enum EtapaContacto {
   
-        Contacto_Inicial("Contacto Inicial"), 
-        Cliente("Cliente"),
-        Dado_de_Baja("Dado de baja");
+        CI("Contacto Inicial"), 
+        C("Cliente"),
+        DB("Dado de baja");
 
     private final String value;
 

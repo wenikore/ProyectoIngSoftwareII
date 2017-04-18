@@ -23,22 +23,7 @@
                          var="seguimientos_encontrados_row"
                          paginator="true"
                          rows="10" 
-                         style="width: 100%"
-                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
-                         >
-
-                <f:facet name="{Exporters}">
-                    <h:commandLink>
-                        <!--<p:graphicImage name="../images/xls.png" width="24"/>-->
-                        <img src="../resources/images/xls.ico" width="30px" style="margin-left:10px;"/>
-                        <p:dataExporter type="xls" target="contactosEncontradosId" fileName="seguimientosContacto" />
-                    </h:commandLink>
-
-                    <!-- <h:commandLink>
-                         <img src="../resources/images/pdf.png" width="15px" style="margin-left:5px"/>
-                         <p:dataExporter type="pdf" target="contactosEncontradosId" fileName="seguimientosContacto"/>
-                     </h:commandLink> -->
-                </f:facet>
+                         style="width: 100%">
                 <p:column headerText="Fecha de Creacion">
                     <h:outputText value="#{seguimientos_encontrados_row.fechaCreacion}"/>
                 </p:column>
@@ -52,7 +37,7 @@
                     <h:outputText value="#{seguimientos_encontrados_row.contacto.estado}"/>
                 </p:column>
                 <p:column headerText="Detalle">
-                    <p:commandLink  action="#{listaSeguimientosVmb.irEditarSeguimiento(seguimientos_encontrados_row)}" ><img style="width: 30px; height: 30px; margin-left: 5em" src="../resources/images/edit.png"/></p:commandLink>
+                    <p:commandButton value="Detalle" action="#{listaSeguimientosVmb.irEditarSeguimiento(seguimientos_encontrados_row)}" ></p:commandButton>
                 </p:column>
             </p:dataTable>
 
@@ -71,7 +56,7 @@
                                      actionListener="#{listaSeguimientosVmb.persistirSeguimiento}"></p:commandButton></br>
             </div>
             <div id="divModificarSeguimiento">
-                <p:outputLabel value=""></p:outputLabel>
+                <p:outputLabel value="HOLA"></p:outputLabel>
             </div>
         </h:form>
     </ui:define>
