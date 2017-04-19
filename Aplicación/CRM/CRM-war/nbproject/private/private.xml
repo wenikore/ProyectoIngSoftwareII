@@ -1,22 +1,3 @@
-<<<<<<< HEAD
-<?xml version="1.0" encoding="UTF-8"?>
-<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="CRM OLD">
-            <file>file:/D:/Proyecto%20Ing/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/vendedor/editarSeguimiento.xhtml</file>
-            <file>file:/D:/Proyecto%20Ing/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/vendedor/agregarContacto.xhtml</file>
-            <file>file:/D:/Proyecto%20Ing/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/src/java/co/crm/utilidades/ConvertidorEntidades.java</file>
-            <file>file:/D:/Proyecto%20Ing/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/src/java/co/crm/vmb/EditarSeguimientoVmb.java</file>
-            <file>file:/D:/Proyecto%20Ing/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/WEB-INF/faces-config.xml</file>
-        </group>
-        <group>
-            <file>file:/C:/Users/samuel/Documents/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/templates/principal.xhtml</file>
-            <file>file:/C:/Users/samuel/Documents/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/administracion/menuAdministracion.xhtml</file>
-        </group>
-    </open-files>
-</project-private>
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
@@ -31,4 +12,3 @@
         </group>
     </open-files>
 </project-private>
->>>>>>> refs/remotes/origin/master
