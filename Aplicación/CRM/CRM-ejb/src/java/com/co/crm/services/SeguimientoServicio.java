@@ -38,4 +38,9 @@ public class SeguimientoServicio {
     public void actualizarSeguimientoServicio(Seguimiento seguimiento) {
         seguimientoFacade.actualizarSeguimiento(seguimiento);
     }
+
+    public int seleccionarCuentaPorSeguimientoMotivoServicio(String motivoSeguimiento) {
+        int count = seguimientoFacade.seleccionarCuentaPorSeguimientoMotivo(motivoSeguimiento);
+        return count;
+    }
 }

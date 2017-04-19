@@ -5,7 +5,9 @@
  */
 package com.co.crm.facades;
 
+import com.co.crm.entities.Seguimiento;
 import com.co.crm.entities.Usuario;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.Query;
@@ -69,4 +71,5 @@ public class UsuarioFacade extends PersistentManager<Usuario> {
         return usuario;
     }
 
+   
 }

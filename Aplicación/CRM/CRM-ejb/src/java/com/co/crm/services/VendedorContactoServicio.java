@@ -6,6 +6,7 @@
 package com.co.crm.services;
 
 import com.co.crm.entities.Contacto;
+import com.co.crm.entities.Seguimiento;
 import com.co.crm.entities.VendedorContacto;
 import com.co.crm.facades.VendedorContactoFacade;
 import java.util.List;
@@ -22,7 +23,6 @@ public class VendedorContactoServicio {
     @Inject
     VendedorContactoFacade vendedorContactoFacade;
 
-    
     /*Esta es la lista de contactos del vendedor que inicia sesión*/
     public List<Contacto> buscarContactosPorVendedorServicio(Long vendedorId) {
         List<Contacto> contactos;
@@ -31,9 +31,14 @@ public class VendedorContactoServicio {
 
     }
 
-    
     /*Este método persiste una entidad de tipo 'VendedorContacto'*/
     public void persistirSupervisorVendedorServicio(VendedorContacto vendedorContacto) {
         vendedorContactoFacade.persistirVendedorContactoFacade(vendedorContacto);
+    }
+
+    public List<Seguimiento> listarTodosSeguimienosVendedoresServicio(Long idVendedor) {
+        List<Seguimiento> todosLosSeguimientos;
+        todosLosSeguimientos = vendedorContactoFacade.listarTodosSeguimienosVendedores(idVendedor);
+        return todosLosSeguimientos;
     }
 }

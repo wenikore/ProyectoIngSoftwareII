@@ -76,13 +76,13 @@ public class ListarContactosVmb implements Serializable {
 
     }
 
-    public String nuevoSeguimiento(Contacto contacto)
-    {
-    contactoSesion.setContactoSession(contacto);
-    return "irNuevoSeguimiento";
+    
+
+    public String nuevoSeguimiento(Contacto contacto) {
+        contactoSesion.setContactoSession(contacto);
+        return "irNuevoSeguimiento";
     }
-    
-    
+
     /*Getters & Setters*/
     public List<Contacto> getContactosHallados() {
         return contactosHallados;

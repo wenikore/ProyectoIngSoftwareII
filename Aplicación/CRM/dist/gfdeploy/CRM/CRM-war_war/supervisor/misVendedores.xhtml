@@ -1,16 +1,35 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+
+        <h1>Vendedores a cargo</h1>
+        <br/>
+        <div style="text-align: center">
+            <img src="../resources/images/contact.ico" style="height: 9em" />
+        </div>
+        <br/><br/>
+        <h:form id="formMisVendedoresId">
+            <p:dataTable id="misVendedoresTableId" var="vendedor_row" 
+                         value="#{listaVendedoresVmb.listaUsuariosPorVendedor}"
+                         style="width: 100%">
+                <p:column headerText="NOMBRES" style="width: 15%">
+                    <p:outputLabel value="#{vendedor_row.persona.primerNombre}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="APELLIDOS" style="width: 20%">
+                    <p:outputLabel value="#{vendedor_row.persona.primerApellido}"/>
+                    <h:outputText value="&#160;" />
+                    <p:outputLabel value="#{vendedor_row.persona.segundoApellido}"/>
+                </p:column>
+                <p:column headerText="EMAIL">
+                    <p:outputLabel value="#{vendedor_row.persona.email}"></p:outputLabel>
+                </p:column>
+            </p:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

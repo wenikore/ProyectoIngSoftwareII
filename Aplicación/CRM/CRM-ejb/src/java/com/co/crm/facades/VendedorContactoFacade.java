@@ -6,10 +6,13 @@
 package com.co.crm.facades;
 
 import com.co.crm.entities.Contacto;
+import com.co.crm.entities.Seguimiento;
 import com.co.crm.entities.VendedorContacto;
+import com.co.crm.services.SeguimientoServicio;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import javax.persistence.Query;
 
 /**
@@ -17,9 +20,13 @@ import javax.persistence.Query;
  * @author Andrés Peña Mantilla
  */
 @Stateless
-public class VendedorContactoFacade extends PersistentManager<VendedorContactoFacade>{
+public class VendedorContactoFacade extends PersistentManager<VendedorContactoFacade> {
+
+    @Inject
+    SeguimientoServicio seguimientoServicio;
     
-     /*Este método persiste una entidad 'VendedorContacto'*/
+
+    /*Este método persiste una entidad 'VendedorContacto'*/
     public void persistirVendedorContactoFacade(VendedorContacto vendedorContacto) {
         em.persist(vendedorContacto);
     }
@@ -34,8 +41,7 @@ public class VendedorContactoFacade extends PersistentManager<VendedorContactoFa
         em.remove(vendedorContacto);
     }
 
-    
-      /*Este método retorna una lista de 'Contactos'  por un 'Vendedor' dado*/
+    /*Este método retorna una lista de 'Contactos'  por un 'Vendedor' dado*/
     public List<Contacto> buscarContactosPorVendedor(Long vendedorId) {
         List<VendedorContacto> vendedorContacto;
         List<Contacto> contactosPorVendedor = new ArrayList<>();
@@ -51,5 +57,28 @@ public class VendedorContactoFacade extends PersistentManager<VendedorContactoFa
         }
         return contactosPorVendedor;
     }
-    
+
+    /*Este método retorna una lista de 'Contactos'  por un 'Vendedor' dado*/
+    public List<Seguimiento> listarTodosSeguimienosVendedores(Long vendedorId) {
+        List<VendedorContacto> vendedorContacto;
+        List<Contacto> contactosPorVendedor = new ArrayList<>();
+        List<Seguimiento> todosLosSeguimientos = new ArrayList();
+        Query q = em.createQuery("SELECT V FROM VendedorContacto V WHERE V.vendedorId =:vendedorId");
+        q.setParameter("vendedorId", vendedorId);
+        vendedorContacto = q.getResultList();
+        for (int i = 0; i < vendedorContacto.size(); i++) {
+            Contacto contacto;
+            contacto = em.find(Contacto.class, vendedorContacto.get(i).getContactoId());
+            contactosPorVendedor.add(contacto);
+        }
+      for (int i = 0; i < contactosPorVendedor.size(); i++) {
+            List<Seguimiento> seguimientosPorContacto;
+            seguimientosPorContacto = seguimientoServicio.buscarSeguimientosPorContactoServicio(contactosPorVendedor.get(i));
+            for (int j = 0; j < seguimientosPorContacto.size(); j++) {
+                todosLosSeguimientos.add(seguimientosPorContacto.get(j));
+            }
+        }
+        return todosLosSeguimientos;
+    }
+
 }

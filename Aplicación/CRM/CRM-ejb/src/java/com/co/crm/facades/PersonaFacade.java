@@ -44,4 +44,12 @@ public class PersonaFacade extends PersistentManager<Persona> {
         return q.getResultList();
 
     }
+    
+    public Persona buscarPorId(Long id)
+    {
+    Persona persona;
+    persona = em.find(Persona.class, id);
+    return persona;
+    }
+            
 }

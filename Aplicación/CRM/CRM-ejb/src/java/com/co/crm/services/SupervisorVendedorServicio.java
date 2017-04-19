@@ -21,6 +21,7 @@ public class SupervisorVendedorServicio {
     
     @Inject
     SupervisorVendedorFacade supervisorVendedorFacade;
+    
 
     /*Esta es la lista de vendedores del supervisor que inicia sesión*/
     public List buscarContactosPorVendedor(Long supervisorId) {

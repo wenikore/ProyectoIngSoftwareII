@@ -6,14 +6,17 @@
 package co.crm.vmb;
 
 import com.co.crm.entities.Contacto;
+import com.co.crm.services.ContactoServicio;
 import com.co.crm.services.VendedorContactoServicio;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import org.omnifaces.util.Messages;
 
 /**
  *
@@ -27,6 +30,8 @@ public class ContactosByVendedorVmb implements Serializable {
     VendedorContactoServicio vendedorContactoServicio;
     @Inject
     UserSmb session;
+    @Inject
+    ContactoServicio contactoServicio;
     private Long vendedorId;
     private List<Contacto> contactos;
 
@@ -49,6 +54,19 @@ public class ContactosByVendedorVmb implements Serializable {
         this.contactos = contactos;
     }
     
+    
+    public void eliminarContacto(Contacto contacto) {
+        try {
+
+            contacto.setEstado("Inactivo");
+            contactoServicio.actualizarContactoServicio(contacto);
+            contactos.remove(contacto);
+            Messages.add("messageId", new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminación exitosa", "Se ha eliminado un cliente en el sistema"));
+
+        } catch (Exception e) {
+        }
+
+    }
     
     
 

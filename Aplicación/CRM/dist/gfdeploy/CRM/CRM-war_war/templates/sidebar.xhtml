@@ -24,12 +24,15 @@
                 <p:menuitem value="Registrar un Contacto" action="#{navigationVmb.nuevoContacto}" icon="ui-icon-disk"></p:menuitem>
                 <p:menuitem value="Contactos A Cargo" icon="ui-icon-contact" action="#{navigationVmb.misContactos}"></p:menuitem>
             </p:submenu>
+            <p:submenu label="Oportunidades" icon="ui-icon-person" rendered="#{(userSmb.usuarioSession.rol.nombre == 'Vendedor')}">
+                <p:menuitem value="Ver Oportunidades" icon="ui-icon-contact" action="#{navigationVmb.misSeguimientos}"></p:menuitem>
+            </p:submenu>
             <p:submenu label="Usuarios" rendered="#{(userSmb.usuarioSession.rol.nombre == 'Administrador') }">
                 <p:menuitem value="Busqueda de Usuarios" action="#{navigationVmb.buscarUsuario}" icon="ui-icon-search"></p:menuitem>
                 <p:menuitem value="Registrar un Usuario" action="#{navigationVmb.nuevoUsuario}" icon="ui-icon-disk"></p:menuitem>
             </p:submenu>
             <p:submenu label="Mis Vendedores" rendered="#{userSmb.usuarioSession.rol.nombre == 'Supervisor'}">
-                <p:menuitem value="Vendedores A Cargo" icon="ui-icon-contact"></p:menuitem>
+                <p:menuitem value="Vendedores A Cargo" icon="ui-icon-contact" action="#{navigationVmb.misVendedores}"></p:menuitem>
                 <p:menuitem value="Registrar un Vendedor" action="#{navigationVmb.nuevoUsuario}" icon="ui-icon-disk"></p:menuitem>
             </p:submenu>
             <p:submenu label="Cerrar Sesión" >

@@ -25,7 +25,6 @@ public class NavigationVmb implements Serializable {
         return "irNuevoContacto";
     }
 
-
     public String buscarUsuario() {
         return "irBuscarUsuario";
     }
@@ -38,9 +37,16 @@ public class NavigationVmb implements Serializable {
         return "irListarUsuarios";
     }
 
+    public String misContactos() {
+        return "irMisContactos";
+    }
+
+    public String misSeguimientos() {
+        return "irMisSeguimientos";
+    }
     
-    public String misContactos()
-    {   
-    return "irMisContactos";
+    public String misVendedores()
+    {
+    return "irMisVendedores";
     }
 }
