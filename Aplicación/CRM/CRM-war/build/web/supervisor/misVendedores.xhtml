@@ -29,6 +29,10 @@
                 <p:column headerText="EMAIL">
                     <p:outputLabel value="#{vendedor_row.persona.email}"></p:outputLabel>
                 </p:column>
+                <p:column headerText="Oportunidades">
+                    <p:commandLink value="Detalle" action="#{listaVendedoresVmb.irOportunidadesVendedor(vendedor_row)}">
+                    </p:commandLink>
+                </p:column>
             </p:dataTable>
         </h:form>
     </ui:define>

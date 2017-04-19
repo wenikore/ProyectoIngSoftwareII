@@ -19,6 +19,7 @@ import org.primefaces.model.chart.Axis;
 import org.primefaces.model.chart.AxisType;
 import org.primefaces.model.chart.BarChartModel;
 import org.primefaces.model.chart.ChartSeries;
+import org.primefaces.model.chart.PieChartModel;
 
 /**
  *
@@ -39,14 +40,40 @@ public class SeguimientosVendedorVmb implements Serializable {
     private List<Seguimiento> seguimientosVendedor;
     private ChartSeries seguimientosVendedorData;
     private BarChartModel seguimientosVendedorModel;
-    
+    private PieChartModel seguimientosPieChartModel;
 
     @PostConstruct
     public void init() {
-        vendedor = session.getUsuarioSession();
-        seguimientosVendedor = vendedorContactoServicio.listarTodosSeguimienosVendedoresServicio(vendedor.getId());
-        System.out.println("El tamaño es" + seguimientosVendedor.size());
-        inizializarModel();
+        if (session.getUsuarioSession().getRol().getNombre().equals("Supervisor")) {
+            vendedor = session.getVendedorSession();
+            seguimientosVendedor = vendedorContactoServicio.listarTodosSeguimienosVendedoresServicio(vendedor.getId());
+            inizializarModel();
+            getSeguimientosPieChartModel();
+        } else {
+            vendedor = session.getUsuarioSession();
+            seguimientosVendedor = vendedorContactoServicio.listarTodosSeguimienosVendedoresServicio(vendedor.getId());
+            System.out.println("El tamaño es" + seguimientosVendedor.size());
+            inizializarModel();
+            getSeguimientosPieChartModel();
+        }
+
+    }
+
+    /**
+     *
+     * @return
+     */
+
+    public PieChartModel getSeguimientosPieChartModel() {
+        seguimientosPieChartModel = new PieChartModel();
+        for (Seguimiento aux : seguimientosVendedor) {
+            int count = seguimientoServicio.seleccionarCuentaPorSeguimientoMotivoServicio(aux.getMotivo());
+            seguimientosPieChartModel.getData().put(aux.getMotivo(), count);
+
+        }
+        seguimientosPieChartModel.setTitle("OPORTUNIADES");
+        seguimientosPieChartModel.setLegendPosition("ne");
+        return seguimientosPieChartModel;
     }
 
     /**/
@@ -77,10 +104,9 @@ public class SeguimientosVendedorVmb implements Serializable {
         yAxis.setMax(75);
 
     }
-    
-    private void inizializarModel()
-    {
-    createBarModel();
+
+    private void inizializarModel() {
+        createBarModel();
     }
 
     /*Getters & Setters*/
@@ -116,4 +142,6 @@ public class SeguimientosVendedorVmb implements Serializable {
         this.seguimientosVendedorModel = seguimientosVendedorModel;
     }
 
+    
+    
 }

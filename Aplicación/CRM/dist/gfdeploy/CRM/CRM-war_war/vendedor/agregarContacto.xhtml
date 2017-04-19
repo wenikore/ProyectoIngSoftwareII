@@ -7,7 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
-        <div style="height: 80%; width: 100%; margin: 0 auto;">
+        <div style="height: 90%; width: 100%; margin: 0 auto;">
             <h:form id="formAgregarContactoId" class="formularios">
                 <h1>Registrar Contacto</h1>
                 <br/>
@@ -46,7 +46,8 @@
                             <td>Etapa Contacto</td>
                             <td>
                                 <p:selectOneMenu  id="etapaContactoId"
-                                                  value="#{contactoVmb.contactoComponente.etapa}">
+                                                  value="#{contactoVmb.contactoComponente.etapa}"
+                                                  style="padding: 1px">
                                     <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
                                     <f:selectItems
                                         value="#{datosComunes.etapasContacto}">    
@@ -57,8 +58,10 @@
                             <td>
 
                                 <p:selectOneMenu id="estadoContactoId" 
-                                                 value="#{contactoVmb.contactoComponente.estado}">
-                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"/>
+                                                 value="#{contactoVmb.contactoComponente.estado}"
+                                                 style="padding: 1px">
+                                    <f:selectItem noSelectionOption="true" itemLabel="Seleccionar"
+                                                  />
                                     <f:selectItems
                                         value="#{datosComunes.estadosContacto}">    
                                     </f:selectItems>
@@ -71,6 +74,12 @@
                     <br><p:commandButton class="btn btn-success" value="Guardar Contacto" actionListener="#{contactoVmb.persistirContacto()}" update="formAgregarContactoId"></p:commandButton></br>
                 </div>
             </h:form> 
+           
+            <center style="margin-top: 1em"> <a href="menuVendedor.xhtml" class="site_title"><img style="height: 3rem; width: 3rem" src="../resources/images/home.png"/> </a></center>
         </div>
+
+        <br/>
+        <br/>
+
     </ui:define>
 </ui:composition>

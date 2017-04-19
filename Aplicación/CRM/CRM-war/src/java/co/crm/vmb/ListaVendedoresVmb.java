@@ -45,4 +45,9 @@ public class ListaVendedoresVmb implements Serializable {
         this.listaUsuariosPorVendedor = listaUsuariosPorVendedor;
     }
 
+    public String irOportunidadesVendedor(Usuario vendedor) {
+        usuarioSesion.setVendedorSession(vendedor);
+        return "irOportunidadVendedor";
+    }
+
 }

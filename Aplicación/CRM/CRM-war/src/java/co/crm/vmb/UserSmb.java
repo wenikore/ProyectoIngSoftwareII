@@ -28,6 +28,7 @@ public class UserSmb implements Serializable {
     private String nombreUsuario;
     /*Seguimiento en sesión*/
     private Seguimiento seguimiento;
+    private Usuario vendedorSession;
 
     /**
      * Creates a new instance of UserSmb
@@ -79,4 +80,14 @@ public class UserSmb implements Serializable {
         this.seguimiento = seguimiento;
     }
 
+    public Usuario getVendedorSession() {
+        return vendedorSession;
+    }
+
+    public void setVendedorSession(Usuario vendedorSession) {
+        this.vendedorSession = vendedorSession;
+    }
+
+    
+    
 }

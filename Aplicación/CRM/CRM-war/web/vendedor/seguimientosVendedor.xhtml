@@ -43,7 +43,38 @@
                     <p:outputLabel value="#{seguimiento_row.contacto.persona.segundoApellido}"></p:outputLabel>
                 </p:column>
             </p:dataTable>
-            <p:chart type="bar" model="#{seguimientosVendedorVmb.seguimientosVendedorModel}" style="height: 300px"></p:chart>
+            <div align="center">
+                <p:chart type="bar" model="#{seguimientosVendedorVmb.seguimientosVendedorModel}" style="height: 300px" widgetVar="chart"></p:chart>
+                <br><p:commandButton type="button" value="Exportar Barra" icon="ui-icon-extlink" onclick="exportChart()"/></br>
+            </div>
+            <div align="center">
+                <br><p:chart id="votes" type="pie" model="#{seguimientosVendedorVmb.seguimientosPieChartModel}" style="width:400px;height:300px" widgetVar="chart2"/></br>
+                <br><p:commandButton type="button" value="Exportar Torta" icon="ui-icon-extlink" onclick="exportChart2()"/></br>
+            </div>
+            <div align="center">
+                <p:dialog widgetVar="dlg" showEffect="fade" modal="true" header="Gráfica de Barras" resizable="false"  style="align-content: center" >
+                    <p:outputPanel id="output" layout="block" style="width:100%;height:300px"/>
+                </p:dialog>
+            </div>
+            <script type="text/javascript">
+                function exportChart() {
+                    //export image
+                    $('#formrSeguimientosVendedorId\\:output').empty().append(PF('chart').exportAsImage());
+
+                    //show the dialog
+                    PF('dlg').show();
+                }
+            </script>
+            <script type="text/javascript">
+                function exportChart2() {
+                    //export image
+                    $('#formrSeguimientosVendedorId\\:output').empty().append(PF('chart2').exportAsImage());
+
+                    //show the dialog
+                    PF('dlg').show();
+                }
+            </script>
         </h:form>
+          <center style="margin-top: 1em"> <a href="menuVendedor.xhtml" class="site_title"><img style="height: 3rem; width: 3rem" src="../resources/images/home.png"/> </a></center>
     </ui:define>
 </ui:composition>
