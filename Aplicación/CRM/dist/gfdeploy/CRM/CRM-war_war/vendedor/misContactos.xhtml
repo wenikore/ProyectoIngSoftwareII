@@ -48,13 +48,13 @@
                 <p:column headerText="Estado">
                     <p:outputLabel value="#{contacto_encontrados_row.estado}"></p:outputLabel>
                 </p:column>
-                <p:column headerText="" style="align-items: center">
+                <p:column headerText="Editar" style="align-items: center">
                     <p:commandLink  style="text-align: center" action="#{listarContactosVmb.seleccionarContacto(contacto_encontrados_row)}"><img style="width: 30px; height: 30px; margin-left: 5em" src="../resources/images/edit.png"/></p:commandLink>
                 </p:column>
-                <p:column headerText="">
+                <p:column headerText="Eliminar">
                     <p:commandLink  actionListener="#{contactosByVendedorVmb.eliminarContacto(contacto_encontrados_row)}" update="contactosEncontradosId"><img style="width: 30px; height: 30px; margin-left: 5em" src="../resources/images/Recycle.png"/></p:commandLink>                   
                 </p:column>
-                <p:column>
+                <p:column headerText="Seguimiento" >
                     <p:commandLink action="#{listarContactosVmb.nuevoSeguimiento(contacto_encontrados_row)}"><img style="width: 30px; height: 30px; margin-left: 5em" src="../resources/images/agregar.png"/></p:commandLink>
                 </p:column>
             </p:dataTable>
