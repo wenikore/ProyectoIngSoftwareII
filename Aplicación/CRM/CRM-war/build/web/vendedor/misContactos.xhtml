@@ -8,12 +8,13 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
 
-        <h1>Contactos a cargo</h1>
+      
         <br/>
         <div style="text-align: center">
             <img src="../resources/images/contact.ico" style="height: 9em" />
         </div>
-        <br/><br/>
+          <h1>Contactos a cargo</h1>
+        <hr/>
         <h:form id="formContactosPorVendedorId">
             <p:dataTable id="contactosEncontradosId"
                          value="#{contactosByVendedorVmb.contactos}"

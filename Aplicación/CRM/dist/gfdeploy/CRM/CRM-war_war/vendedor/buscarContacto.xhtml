@@ -6,19 +6,19 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core"
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
-    
+
     <ui:define name="content">
         <h:form id="formListarContactosId">           
             <br/>
             <div style="text-align: center">
                 <img src="../resources/images/contact.ico" style="height: 9em" />
             </div>
-
-            <br/><br/>
-            <br><p:inputText value="#{listarContactosVmb.textoBusqueda}" id="txtBusquedaContacto"/></br>
-            <br><p:commandButton value="Buscar contactos" 
+            <h1>Busqueda de contactos</h1>
+           <hr/>
+            <p:inputText value="#{listarContactosVmb.textoBusqueda}" id="txtBusquedaContacto"/>
+            <p:commandButton value="Buscar contactos" 
                                  actionListener="#{listarContactosVmb.buscarContactoPorCedula()}"
-                                 update="contactosEncontradosId,txtBusquedaContacto"/></br> 
+                                 update="contactosEncontradosId,txtBusquedaContacto"/>
             <br></br>
             <p:dataTable id="contactosEncontradosId"
                          value="#{listarContactosVmb.contactosHallados}"

@@ -8,7 +8,11 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="content">
         <h:outputScript library="js" name="showDivNuevoSeguimiento.js"/>
-
+        <div style="text-align: center">
+            <img src="../resources/images/worker.png" style="height: 9em"/>
+        </div>
+        <h1>Seguimiento Oportunidades</h1>
+        <hr/>
         <h:form id="formrSeguimientosVendedorId">
             <p:dataTable value="#{seguimientosVendedorVmb.seguimientosVendedor}" 
                          var="seguimiento_row"
@@ -75,6 +79,6 @@
                 }
             </script>
         </h:form>
-          <center style="margin-top: 1em"> <a href="menuVendedor.xhtml" class="site_title"><img style="height: 3rem; width: 3rem" src="../resources/images/home.png"/> </a></center>
+        <center style="margin-top: 1em"> <a href="menuVendedor.xhtml" class="site_title"><img style="height: 3rem; width: 3rem" src="../resources/images/home.png"/> </a></center>
     </ui:define>
 </ui:composition>
