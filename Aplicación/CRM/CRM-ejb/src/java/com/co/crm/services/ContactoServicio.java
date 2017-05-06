@@ -7,6 +7,7 @@ package com.co.crm.services;
 
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Persona;
+import com.co.crm.entities.Usuario;
 import com.co.crm.facades.ContactoFacade;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -23,6 +24,9 @@ public class ContactoServicio {
     ContactoFacade contactoFacade;
     @Inject
     PersonaServicio personaServicio;
+    @Inject
+    VendedorContactoServicio vendedorContactoServicio;
+    
 
     public void persistirContactoServicio(String contactoEstado, String contactoEtapa, Persona persona) {
 

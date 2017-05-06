@@ -5,6 +5,8 @@
  */
 package co.crm.mmb;
 
+import java.util.Date;
+
 /**
  *
  * @author Andrés Peña Mantilla
@@ -13,6 +15,9 @@ public class TareaMmb {
     
     String descripcion;
     String estado;
+    String actividad;
+    Date fechaInicio;
+    Date fechaFinal;
     
     /*Getters & Setters*/
 
@@ -31,7 +36,30 @@ public class TareaMmb {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
-    
-    
+
+    public String getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
+    }
+
+    public Date getFechaInicio() {
+        return fechaInicio;
+    }
+
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
+    public Date getFechaFinal() {
+        return fechaFinal;
+    }
+
+    public void setFechaFinal(Date fechaFinal) {
+        this.fechaFinal = fechaFinal;
+    }
+
+
 }

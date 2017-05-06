@@ -35,6 +35,9 @@ public class Tarea implements Serializable {
     @Column(name="tarea_estado")
     private String estado;
     
+    @Column(name="tarea_actividad")
+    private String actividad;
+    
     
     @Column(name="tarea_fecha_creacion")
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -99,8 +102,14 @@ public class Tarea implements Serializable {
         this.seguimiento = seguimiento;
     }
 
-    
-    
+    public String getActividad() {
+        return actividad;
+    }
+
+    public void setActividad(String actividad) {
+        this.actividad = actividad;
+    }
+        
     @Override
     public int hashCode() {
         int hash = 0;

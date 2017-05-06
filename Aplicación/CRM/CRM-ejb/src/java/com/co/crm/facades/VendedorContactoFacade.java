@@ -7,8 +7,10 @@ package com.co.crm.facades;
 
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Seguimiento;
+import com.co.crm.entities.Usuario;
 import com.co.crm.entities.VendedorContacto;
 import com.co.crm.services.SeguimientoServicio;
+import com.co.crm.services.UsuarioServicio;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -24,7 +26,8 @@ public class VendedorContactoFacade extends PersistentManager<VendedorContactoFa
 
     @Inject
     SeguimientoServicio seguimientoServicio;
-    
+    @Inject
+    UsuarioServicio usuarioServicio;
 
     /*Este método persiste una entidad 'VendedorContacto'*/
     public void persistirVendedorContactoFacade(VendedorContacto vendedorContacto) {
@@ -71,7 +74,7 @@ public class VendedorContactoFacade extends PersistentManager<VendedorContactoFa
             contacto = em.find(Contacto.class, vendedorContacto.get(i).getContactoId());
             contactosPorVendedor.add(contacto);
         }
-      for (int i = 0; i < contactosPorVendedor.size(); i++) {
+        for (int i = 0; i < contactosPorVendedor.size(); i++) {
             List<Seguimiento> seguimientosPorContacto;
             seguimientosPorContacto = seguimientoServicio.buscarSeguimientosPorContactoServicio(contactosPorVendedor.get(i));
             for (int j = 0; j < seguimientosPorContacto.size(); j++) {
@@ -81,4 +84,12 @@ public class VendedorContactoFacade extends PersistentManager<VendedorContactoFa
         return todosLosSeguimientos;
     }
 
+    public Usuario buscarVendedorPorContacto(Long idContacto) {
+        Query q = em.createQuery("SELECT V FROM VendedorContacto  V WHERE V.contactoId = :idContacto");
+        q.setParameter("idContacto", idContacto);
+        VendedorContacto aux = (VendedorContacto) q.getSingleResult();
+        Usuario vendedor;
+        vendedor = usuarioServicio.buscarPorIdServicio(aux.getVendedorId());
+        return vendedor;
+    }
 }

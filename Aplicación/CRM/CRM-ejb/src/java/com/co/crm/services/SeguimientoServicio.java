@@ -5,9 +5,11 @@
  */
 package com.co.crm.services;
 
+import com.co.crm.components.SeguimientoInformacionMmb;
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Seguimiento;
 import com.co.crm.facades.SeguimientoFacade;
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -43,4 +45,12 @@ public class SeguimientoServicio {
         int count = seguimientoFacade.seleccionarCuentaPorSeguimientoMotivo(motivoSeguimiento);
         return count;
     }
+
+    public List<SeguimientoInformacionMmb> seguimientosVendedoresPorSupervisorServicio(Long idSupervisor) {
+        List<SeguimientoInformacionMmb> todosLosSeguimientos = new ArrayList<>();
+        todosLosSeguimientos = seguimientoFacade.seguimientosVendedoresPorSupervisor(idSupervisor);
+
+        return todosLosSeguimientos;
+    }
+
 }

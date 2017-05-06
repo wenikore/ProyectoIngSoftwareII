@@ -7,6 +7,7 @@ package com.co.crm.services;
 
 import com.co.crm.entities.Contacto;
 import com.co.crm.entities.Seguimiento;
+import com.co.crm.entities.Usuario;
 import com.co.crm.entities.VendedorContacto;
 import com.co.crm.facades.VendedorContactoFacade;
 import java.util.List;
@@ -41,4 +42,11 @@ public class VendedorContactoServicio {
         todosLosSeguimientos = vendedorContactoFacade.listarTodosSeguimienosVendedores(idVendedor);
         return todosLosSeguimientos;
     }
+
+    public Usuario buscarVendedorPorContacto(Long idContacto) {
+        Usuario vendedor;
+        vendedor = vendedorContactoFacade.buscarVendedorPorContacto(idContacto);
+        return vendedor;
+    }
+
 }

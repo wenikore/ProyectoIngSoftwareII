@@ -71,5 +71,10 @@ public class UsuarioFacade extends PersistentManager<Usuario> {
         return usuario;
     }
 
-   
+    public Usuario buscarPorId(Long id) {
+        Usuario usuario;
+        usuario = em.find(Usuario.class, id);
+        return usuario;
+    }
+
 }

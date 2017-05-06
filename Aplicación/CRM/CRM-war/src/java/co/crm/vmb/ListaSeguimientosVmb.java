@@ -72,20 +72,17 @@ public class ListaSeguimientosVmb implements Serializable {
         }
 
     }
-    
-    public String irDetalleSeguimiento(Seguimiento seguimiento)
-    {
-    session.setSeguimiento(seguimiento);     
-    return "irDetalleSeguimiento";
-    }
-    
 
-     public String irEditarSeguimiento(Seguimiento seguimiento)
-    {
-    session.setSeguimiento(seguimiento);     
-    return "irEditarSeguimiento";
+    public String irDetalleSeguimiento(Seguimiento seguimiento) {
+        session.setSeguimiento(seguimiento);
+        return "irDetalleSeguimiento";
     }
-    
+
+    public String irEditarSeguimiento(Seguimiento seguimiento) {
+        session.setSeguimiento(seguimiento);
+        return "irEditarSeguimiento";
+    }
+
     /*Getters & Setters*/
     public List<Seguimiento> getSeguimientosPorContacto() {
         return seguimientosPorContacto;
@@ -109,6 +106,11 @@ public class ListaSeguimientosVmb implements Serializable {
 
     public void setSeguimientoComponente(SeguimientoMmb seguimientoComponente) {
         this.seguimientoComponente = seguimientoComponente;
+    }
+
+    public String irNuevaTarea(Seguimiento seguimientoSeleccionado) {
+        session.setSeguimiento(seguimientoSeleccionado);
+        return "irNuevaTarea";
     }
 
 }

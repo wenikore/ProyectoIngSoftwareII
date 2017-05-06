@@ -50,4 +50,7 @@ public class SupervisorVendedorFacade extends PersistentManager<SupervisorVended
         }
         return vendedoresPorSupervisor;
     }
+    
+    
+    
 }

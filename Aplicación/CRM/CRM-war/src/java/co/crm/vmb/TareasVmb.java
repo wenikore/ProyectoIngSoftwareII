@@ -52,15 +52,13 @@ public class TareasVmb implements Serializable {
     public void persistirTarea() {
         try {
 
-            Date fechaCreacion = new Date();
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            Date todayWithZeroTime = formatter.parse(formatter.format(fechaCreacion));
 
             tareaNueva = new Tarea();
             tareaNueva.setSeguimiento(seguimientoSesion);
             tareaNueva.setTareaDescripcion(tareaComponente.getDescripcion());
-            tareaNueva.setFechaCreacion(todayWithZeroTime);
+            tareaNueva.setFechaCreacion(tareaComponente.getFechaInicio());
             tareaNueva.setEstado(tareaComponente.getEstado());
+            tareaNueva.setActividad(tareaComponente.getActividad());
             tareaServicio.persistirTareaServicio(tareaNueva);
             tareasPorSeguimiento.add(tareaNueva);
             tareaNueva = new Tarea();

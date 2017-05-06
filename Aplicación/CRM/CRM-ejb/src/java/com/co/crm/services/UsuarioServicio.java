@@ -79,4 +79,12 @@ public class UsuarioServicio {
         usuario = usuarioFacade.buscarUsuarioPorIdentificacion(identificacion);
         return usuario.getId();
     }
+    
+    public Usuario buscarPorIdServicio (Long id)
+    {
+    Usuario usuario;
+    usuario = usuarioFacade.buscarPorId(id);
+    return usuario;
+    }
+  
 }
