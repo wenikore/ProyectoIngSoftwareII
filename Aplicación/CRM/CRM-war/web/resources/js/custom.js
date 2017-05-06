@@ -693,11 +693,11 @@ if (typeof NProgress != 'undefined') {
 				tooltipFillColor: "rgba(51, 51, 51, 0.55)",
 				data: {
 					labels: [
-						"Symbian",
-						"Blackberry",
-						"Other",
-						"Android",
-						"IOS"
+						"Contacto Posterior",
+						"Cita Virtual",
+						"Otro",
+						"Cita presencial",
+						"Contacto Telefonico"
 					],
 					datasets: [{
 						data: [15, 20, 30, 10, 30],
