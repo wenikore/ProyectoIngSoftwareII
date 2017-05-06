@@ -31,7 +31,7 @@
             </p:dataTable>
             <br></br>
             <br></br>
-            <p:panelGrid id="panelNuevaTarea">
+            <p:panelGrid id="panelNuevaTarea" rendered="#{(userSmb.usuarioSession.rol.nombre == 'Vendedor')}">
                 <p:row>
                     <p:column style="border-color: #FFFFFF">
                         <p:outputLabel value="ESTADO"></p:outputLabel>
@@ -74,7 +74,9 @@
                 </p:column>
             </p:panelGrid>
             <br></br>
-            <p:commandButton value="Guardar Tarea" update="formTareasSeguimientoId" actionListener="#{tareasVmb.persistirTarea()}"></p:commandButton>
+            <p:commandButton value="Guardar Tarea" update="formTareasSeguimientoId"
+                             rendered="#{(userSmb.usuarioSession.rol.nombre == 'Vendedor')}"
+                             actionListener="#{tareasVmb.persistirTarea()}"></p:commandButton>
         </h:form>
         <script>
 

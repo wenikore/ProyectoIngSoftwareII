@@ -29,6 +29,7 @@ public class UserSmb implements Serializable {
     /*Seguimiento en sesión*/
     private Seguimiento seguimiento;
     private Usuario vendedorSession;
+    
 
     /**
      * Creates a new instance of UserSmb

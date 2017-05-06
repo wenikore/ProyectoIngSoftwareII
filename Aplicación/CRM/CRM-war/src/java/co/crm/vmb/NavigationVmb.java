@@ -44,9 +44,13 @@ public class NavigationVmb implements Serializable {
     public String misSeguimientos() {
         return "irMisSeguimientos";
     }
-    
-    public String misVendedores()
-    {
-    return "irMisVendedores";
+
+    public String misVendedores() {
+        return "irMisVendedores";
+    }
+
+    public String todasLasOportunidades() {
+
+        return "irTodasOportunidades";
     }
 }

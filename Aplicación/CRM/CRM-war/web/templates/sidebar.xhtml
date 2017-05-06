@@ -34,6 +34,7 @@
             <p:submenu label="Mis Vendedores" rendered="#{userSmb.usuarioSession.rol.nombre == 'Supervisor'}">
                 <p:menuitem value="Vendedores A Cargo" icon="ui-icon-contact" action="#{navigationVmb.misVendedores}"></p:menuitem>
                 <p:menuitem value="Registrar un Vendedor" action="#{navigationVmb.nuevoUsuario}" icon="ui-icon-disk"></p:menuitem>
+                <p:menuitem value="Ver todas las oportunidades" action="#{navigationVmb.todasLasOportunidades}" icon="ui-icon-disk"></p:menuitem>
             </p:submenu>
             <p:submenu label="Cerrar Sesión" >
                 <p:menuitem value="Salir" action="#{loginVmb.logout}" icon="ui-icon-circle-close"></p:menuitem>

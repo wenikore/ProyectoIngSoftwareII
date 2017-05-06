@@ -112,4 +112,11 @@ public class LoginVmb implements Serializable {
         this.usuario_password = usuario_password;
     }
 
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }

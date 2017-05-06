@@ -109,10 +109,24 @@
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-      <navigation-case>
+        <navigation-case>
             <from-outcome>irNuevaTarea</from-outcome>
             <to-view-id>/vendedor/tareaSeguimiento.xhtml</to-view-id>
             <redirect>true</redirect>
         </navigation-case>
-        </navigation-rule>                        
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>irTodasOportunidades</from-outcome>
+            <to-view-id>/supervisor/seguimientosGenerales.xhtml</to-view-id>
+            <redirect>true</redirect>
+        </navigation-case>
+    </navigation-rule> 
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>irDetalleTareas</from-outcome>
+            <to-view-id>/vendedor/tareaSeguimiento.xhtml</to-view-id>
+            <redirect>true</redirect>
+        </navigation-case>
+    </navigation-rule>                           
 </faces-config>
