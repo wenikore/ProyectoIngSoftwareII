@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="content">
+        <h:form id="detalleSeguimientoId">
+
+            <p:dataTable value="#{tareasVmb.tareasPorSeguimiento}"
+                         rows="10"
+                         paginator="true"
+                         var="tarea_row">
+                <p:column headerText="Estado">
+                    <p:outputLabel value="#{tarea_row.estado}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Fecha de Creacion">
+                    <p:outputLabel value="#{tarea_row.fechaCreacion}"></p:outputLabel>
+                </p:column>
+                <p:column headerText="Estado">
+                    <p:selectOneMenu value="#{tareasVmb.tareaComponente.estado}">
+                        <f:selectItem itemLabel="Seleccione Estado" noSelectionOption="true"></f:selectItem>
+                        <f:selectItem itemLabel="Activo" itemValue="A"/>
+                        <f:selectItem itemLabel="Inactivo" itemValue="I"/>
+                    </p:selectOneMenu> 
+                </p:column>
+                <p:column headerText="Cambiar Estado">
+                    <p:commandButton value="Guardar"/>
+                </p:column>
+            </p:dataTable>
+
+
+            <div align="center" id="divNuevaTarea">
+                <br><p:inputTextarea value="#{tareasVmb.tareaComponente.descripcion}"
+                                     placeholder="Escriba aquí su descripcion">
+                    </p:inputTextarea></br>
+                <br>
+                    <p:selectOneMenu value="#{tareasVmb.tareaComponente.estado}">
+                        <f:selectItem itemLabel="Seleccione Estado" noSelectionOption="true"></f:selectItem>
+                        <f:selectItem itemLabel="Activo" itemValue="A"/>
+                    </p:selectOneMenu>  
+                </br>
+                <br><p:commandButton value="Guardar Tarea" actionListener="#{tareasVmb.persistirTarea}" update="detalleSeguimientoId"></p:commandButton></br> 
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
