@@ -11,8 +11,8 @@ package com.co.crm.enums;
  */
 public enum TipoSeguimiento {
     
-        Envio_Informacion("Envío Información"), 
-        Contacto_Telefonico("Contacto Telefónico"),
+        Envío_Informacion("Envío Información"), 
+        Contacto_Telefónico("Contacto Telefónico"),
         Cita_Presencial("Cita Presencial"),
         Cita_Virtual("Cita Virtual"),
         Contacto_Posterior("Contacto Posterior"),

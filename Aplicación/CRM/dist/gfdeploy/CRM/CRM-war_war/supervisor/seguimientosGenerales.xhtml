@@ -31,17 +31,17 @@
                     <p:outputLabel value="#{seguimiento_row.vendedor.persona.primerNombre}"></p:outputLabel>
                 </p:column>
                 <p:column headerText="TAREAS">
-                    <p:commandButton action="#{seguimientosGeneralesVmb.irDetalleTareas(seguimiento_row)}"></p:commandButton>
+                    <p:commandButton 
+                        action="#{seguimientosGeneralesVmb.irDetalleTareas(seguimiento_row)}"
+                        value="Ver Tareas"></p:commandButton>
                 </p:column>
             </p:dataTable>
             <br></br>
             <div align="center">
                 <p:chart type="bar" model="#{seguimientosGeneralesVmb.seguimientosModel}" style="height: 300px" widgetVar="chart"></p:chart>
-                <br><p:commandButton type="button" value="Exportar Barra" icon="ui-icon-extlink" onclick="exportChart()"/></br>
             </div>
             <div align="center">
                 <br><p:chart id="votes" type="pie" model="#{seguimientosGeneralesVmb.seguimientosPieChartModel}" style="width:400px;height:300px" widgetVar="chart2"/></br>
-                <br><p:commandButton type="button" value="Exportar Torta" icon="ui-icon-extlink" onclick="exportChart2()"/></br>
             </div>
         </h:form>
     </ui:define>

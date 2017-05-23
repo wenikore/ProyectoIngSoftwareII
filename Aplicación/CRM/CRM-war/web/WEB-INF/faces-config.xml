@@ -128,5 +128,27 @@
             <to-view-id>/vendedor/tareaSeguimiento.xhtml</to-view-id>
             <redirect>true</redirect>
         </navigation-case>
-    </navigation-rule>                           
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>irSeleccionarSupervisor</from-outcome>
+            <to-view-id>/administracion/listaSupervisores.xhtml</to-view-id>
+            <redirect>true</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <navigation-case>
+            <from-outcome>irDetalleSupervisor</from-outcome>
+            <to-view-id>/administracion/detalleVendedores.xhtml</to-view-id>
+            <redirect>true</redirect>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>irDetalleVendedor</from-outcome>
+            <to-view-id>/vendedor/seguimientosVendedor.xhtml</to-view-id>
+            <redirect>true</redirect>
+        </navigation-case>
+    </navigation-rule>                                                               
 </faces-config>

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:g="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns="http://www.w3.org/1999/xhtml"
+                >
+    <ui:define name="content" >
+        <h:form id="detalleVendedoresId">
+            <p:tabView dynamic="true" cache="true">
+
+
+                <p:tab title="Lista de Oportunidades">
+
+                    <br>
+                        <p:dataTable value="#{detalleSupervisorVmb.seguimientosPorSupervisor}"
+                                     emptyMessage="Oportunidades Vacías"
+                                     rows="10"
+                                     paginator="true"
+                                     var="seguimiento_row">
+                            <p:column>
+                                <p:outputLabel value="#{seguimiento_row.seguimiento.fechaCreacion}"/>
+                            </p:column>
+
+                        </p:dataTable>
+                    </br>
+                </p:tab>
+                <p:tab title="Lista de Vendedores">
+                    <br>
+                        <p:dataTable value="#{detalleSupervisorVmb.vendedoresPorSupervisor}"
+                                     emptyMessage="Sin Vendedores Asignados."
+                                     rows="10"
+                                     paginator="true"
+                                     
+                                     >
+                            <p:column headerText="MOTIVO">
+                                <p:outputLabel value="#{seguimiento_row.seguimiento.motivo}"></p:outputLabel>
+                            </p:column>
+                            <p:column headerText="CONTACTO">
+                                <p:outputLabel value="#{seguimiento_row.seguimiento.contacto.persona.primerNombre}"></p:outputLabel>
+
+                            </p:column>
+                            <p:column headerText="VENDEDOR">
+                                <p:outputLabel value="#{seguimiento_row.vendedor.persona.primerNombre}"></p:outputLabel>
+                            </p:column>
+                        </p:dataTable>
+                    </br>
+                </p:tab>
+            </p:tabView>
+
+
+        </h:form>
+    </ui:define>
+</ui:composition>

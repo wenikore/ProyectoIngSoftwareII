@@ -29,7 +29,7 @@ public class UserSmb implements Serializable {
     /*Seguimiento en sesión*/
     private Seguimiento seguimiento;
     private Usuario vendedorSession;
-    
+    private Usuario supervisor;
 
     /**
      * Creates a new instance of UserSmb
@@ -89,6 +89,15 @@ public class UserSmb implements Serializable {
         this.vendedorSession = vendedorSession;
     }
 
+    public Usuario getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(Usuario supervisor) {
+        this.supervisor = supervisor;
+    }
+
+    
     
     
 }

@@ -53,4 +53,9 @@ public class NavigationVmb implements Serializable {
 
         return "irTodasOportunidades";
     }
+
+    public String todosLosSupervisores() {
+        return "irSeleccionarSupervisor";
+    }
+
 }

@@ -77,4 +77,13 @@ public class UsuarioFacade extends PersistentManager<Usuario> {
         return usuario;
     }
 
+    /*Este método retorna una lista de todos los Supervisores*/
+    public List<Usuario> buscarTodosLosSupervisores() {
+        List<Usuario> supervisores;
+        Query q = em.createQuery("SELECT U FROM Usuario U WHERE U.rol.id = :idRol");
+        q.setParameter("idRol", 2);
+        supervisores = q.getResultList();
+        return supervisores;
+    }
+
 }

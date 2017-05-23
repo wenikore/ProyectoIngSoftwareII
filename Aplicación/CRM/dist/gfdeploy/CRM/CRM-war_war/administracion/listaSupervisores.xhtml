@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/principal.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+    <ui:define name="content">
+        <h:form id="listaSupervisores">
+            <p:selectOneMenu value="#{listaSupervisoresVmb.idSupervisor}">
+                <f:selectItem itemLabel="Seleccione un Supervisor" noSelectionOption="true">
+
+                </f:selectItem>
+
+                <f:selectItems value="#{listaSupervisoresVmb.supervisores}"/>
+                <p:ajax  listener="#{listaSupervisoresVmb.buscarVendedoresPorSupervisor}"
+                         update="listaSupervisores:tabViewId"
+                         />
+            </p:selectOneMenu>
+            
+            <p:tabView dynamic="true" cache="true" id="tabViewId">
+                <p:tab title="LISTA DE VENDEDORES" >
+                    <br></br>
+
+                    <br><p:dataTable value="#{listaSupervisoresVmb.vendedoresPorSupervisor}"
+                                     id="tablaSupervisoresId"
+                                     paginator="true" 
+                                     rows="10"
+                                     var="vendedor_row">
+                            <p:column headerText="NOMBRE">
+                                <p:outputLabel value="#{vendedor_row.persona.primerNombre}"/>
+                                <h:outputText value="&#160;" />
+                                <p:outputLabel value="#{vendedor_row.persona.primerApellido}"/>
+                                <h:outputText value="&#160;" />
+                                <p:outputLabel value="#{vendedor_row.persona.segundoApellido}"/>
+                            </p:column>
+                            <p:column headerText="IDENTIFICACIÓN">
+                                <p:outputLabel value="#{vendedor_row.persona.identificacion}"/>
+                            </p:column>
+                            <p:column headerText="EMAIL">
+                                <p:outputLabel value="#{vendedor_row.persona.email}"/>
+                            </p:column>
+                            <p:column headerText="DETALLE">
+                                <p:commandLink value="Detalle" action="#{listaSupervisoresVmb.irDetalleVendedor(vendedor_row)}"/>
+                            </p:column>
+                        </p:dataTable>
+                    </br>
+
+                </p:tab>
+                <p:tab title="LISTA DE OPORTUNIDADES">
+                    <br></br>
+
+                    <br>
+                        <p:dataTable value="#{listaSupervisoresVmb.seguimientosPorSupervisor}"
+                                     id="tablaSeguimientosId"
+                                     paginator="true" 
+                                     rows="10"
+                                     var="seguimiento_row"
+                                     emptyMessage="No se registran oportunidades."
+                                     widgetVar="tablaTodosSeguimientosWidgetVar">
+                            <p:column headerText="MOTIVO"
+                                      filterBy="#{seguimiento_row.seguimiento.motivo}" 
+                                      footerText="exact" 
+                                      filterMatchMode="exact">
+                                <f:facet name="filter">
+                                    <p:selectOneMenu onchange="PF('tablaTodosSeguimientosWidgetVar').filter()">
+                                        <f:selectItem itemValue="#{null}" itemLabel="Seleecione uno" noSelectionOption="true"></f:selectItem>
+                                        <f:selectItems value="#{datosComunes.tipoSeguimiento}"></f:selectItems>
+                                    </p:selectOneMenu>
+                                </f:facet>
+                                <p:outputLabel value="#{seguimiento_row.seguimiento.motivo}"></p:outputLabel>
+                            </p:column>
+                            <p:column headerText="CONTACTO">
+                                <p:outputLabel value="#{seguimiento_row.seguimiento.contacto.persona.primerNombre}"></p:outputLabel>
+
+                            </p:column>
+                            <p:column headerText="VENDEDOR">
+                                <p:outputLabel value="#{seguimiento_row.vendedor.persona.primerNombre}"></p:outputLabel>
+                            </p:column>
+
+                        </p:dataTable>
+                    </br>
+
+                    <br></br>
+                    <div align="center">
+                        <p:chart type="bar" model="#{listaSupervisoresVmb.seguimientosModel}" style="height: 300px" widgetVar="chart"></p:chart>
+                    </div>
+                    <div align="center">
+                        <br><p:chart id="votes" type="pie" model="#{listaSupervisoresVmb.seguimientosPieChartModel}" style="width:400px;height:300px" widgetVar="chart2"/></br>
+                    </div>
+
+                </p:tab>
+
+            </p:tabView>
+        </h:form>
+    </ui:define>
+</ui:composition>

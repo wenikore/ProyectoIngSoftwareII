@@ -9,7 +9,9 @@ import com.co.crm.entities.Persona;
 import com.co.crm.entities.Rol;
 import com.co.crm.entities.Usuario;
 import com.co.crm.facades.UsuarioFacade;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -79,12 +81,29 @@ public class UsuarioServicio {
         usuario = usuarioFacade.buscarUsuarioPorIdentificacion(identificacion);
         return usuario.getId();
     }
-    
-    public Usuario buscarPorIdServicio (Long id)
-    {
-    Usuario usuario;
-    usuario = usuarioFacade.buscarPorId(id);
-    return usuario;
+
+    public Usuario buscarPorIdServicio(Long id) {
+        Usuario usuario;
+        usuario = usuarioFacade.buscarPorId(id);
+        return usuario;
     }
-  
+
+    public List<Usuario> buscarTodosLosSupervisoresServicio() {
+        List<Usuario> supervisores;
+        supervisores = usuarioFacade.buscarTodosLosSupervisores();
+        return supervisores;
+    }
+
+    public Map<String, Long> buscarTodosLosSupervisoresMapServicio() {
+        List<Usuario> supervisores;
+        Map<String, Long> supervisoresMap = new HashMap<>();
+        supervisores = usuarioFacade.buscarTodosLosSupervisores();
+
+        for (Usuario supervisor : supervisores) {
+            supervisoresMap.put(supervisor.getPersona().getPrimerNombre() + " " + supervisor.getPersona().getPrimerApellido() + " "
+                    + supervisor.getPersona().getSegundoApellido(), supervisor.getId());
+        }
+        return supervisoresMap;
+    }
+
 }

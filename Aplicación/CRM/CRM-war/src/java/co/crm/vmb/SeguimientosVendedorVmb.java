@@ -49,6 +49,11 @@ public class SeguimientosVendedorVmb implements Serializable {
             seguimientosVendedor = vendedorContactoServicio.listarTodosSeguimienosVendedoresServicio(vendedor.getId());
             inizializarModel();
             getSeguimientosPieChartModel();
+        } else if (session.getUsuarioSession().getRol().getNombre().equals("Administrador")) {
+            vendedor = session.getVendedorSession();
+            seguimientosVendedor = vendedorContactoServicio.listarTodosSeguimienosVendedoresServicio(vendedor.getId());
+            inizializarModel();
+            getSeguimientosPieChartModel();
         } else {
             vendedor = session.getUsuarioSession();
             seguimientosVendedor = vendedorContactoServicio.listarTodosSeguimienosVendedoresServicio(vendedor.getId());
@@ -63,7 +68,6 @@ public class SeguimientosVendedorVmb implements Serializable {
      *
      * @return
      */
-
     public PieChartModel getSeguimientosPieChartModel() {
         seguimientosPieChartModel = new PieChartModel();
         for (Seguimiento aux : seguimientosVendedor) {
@@ -101,7 +105,7 @@ public class SeguimientosVendedorVmb implements Serializable {
         Axis yAxis = seguimientosVendedorModel.getAxis(AxisType.Y);
         yAxis.setLabel("CANTIDAD");
         yAxis.setMin(0);
-        yAxis.setMax(75);
+        yAxis.setMax(seguimientosVendedor.size());
 
     }
 
@@ -142,6 +146,4 @@ public class SeguimientosVendedorVmb implements Serializable {
         this.seguimientosVendedorModel = seguimientosVendedorModel;
     }
 
-    
-    
 }
