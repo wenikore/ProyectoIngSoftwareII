@@ -57,7 +57,6 @@ public class SeguimientosVendedorVmb implements Serializable {
         } else {
             vendedor = session.getUsuarioSession();
             seguimientosVendedor = vendedorContactoServicio.listarTodosSeguimienosVendedoresServicio(vendedor.getId());
-            System.out.println("El tamaño es" + seguimientosVendedor.size());
             inizializarModel();
             getSeguimientosPieChartModel();
         }
@@ -75,7 +74,7 @@ public class SeguimientosVendedorVmb implements Serializable {
             seguimientosPieChartModel.getData().put(aux.getMotivo(), count);
 
         }
-        seguimientosPieChartModel.setTitle("OPORTUNIADES");
+        seguimientosPieChartModel.setTitle("OPORTUNIDADES");
         seguimientosPieChartModel.setLegendPosition("ne");
         return seguimientosPieChartModel;
     }
@@ -144,6 +143,49 @@ public class SeguimientosVendedorVmb implements Serializable {
 
     public void setSeguimientosVendedorModel(BarChartModel seguimientosVendedorModel) {
         this.seguimientosVendedorModel = seguimientosVendedorModel;
+    }
+
+    ////Desde aqui se inicia a hacer las modificaciones
+    public int cantidadSeguimientos() {
+
+        return seguimientosVendedor.size();
+    }
+
+    public void clasificarSeguimientos() {
+        int Envio_Informacion = 0;
+        int Contacto_Telefonico = 0;
+        int Cita_Virtual = 0;
+        int Contacto_Posterior = 0;
+        int Otro = 0;
+
+        for (Seguimiento aux : seguimientosVendedor) {
+    
+            if (aux.getMotivo().equals("Envio_Informacion")) {
+                Envio_Informacion++;
+            }
+            if (aux.getMotivo().equals("Contacto_Telefonico")) {
+                Contacto_Telefonico++;
+            }
+            if (aux.getMotivo().equals("Cita_Virtual")) {
+                Cita_Virtual++;
+            }
+
+            if (aux.getMotivo().equals("Contacto_Posterior")) {
+                Contacto_Posterior++;
+            }
+
+            if (aux.getMotivo().equals("Otro")) {
+                Otro++;
+            }
+        }
+ 
+
+        System.out.println("Se encontraron: \n Envio_Informacion" + Envio_Informacion
+                + "\n Contacto_Telefonico " + Contacto_Telefonico
+                + "\n Cita_Virtual " + Cita_Virtual
+                + "\n Contacto_Posterior " + Contacto_Posterior
+                + "\n Otro" + Otro);
+
     }
 
 }
