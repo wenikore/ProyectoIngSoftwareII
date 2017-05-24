@@ -166,8 +166,8 @@ public class SeguimientosVendedorVmb implements Serializable {
         Cita_Presencial = 0;
         
         for (Seguimiento aux : seguimientosVendedor) {
-
-            if (aux.getMotivo().equals("Envio_Informacion")) {
+            System.out.println(aux.getMotivo());
+            if (aux.getMotivo().equals("Envio_Informacion") || aux.getMotivo().equals("Envío_Informacion")) {
                 Envio_Informacion++;
             }
             if (aux.getMotivo().equals("Contacto_Telefonico") || aux.getMotivo().equals("Contacto_Telefónico")) {
@@ -195,7 +195,8 @@ System.out.println("Se encontraron: \n Envio_Informacion" + Envio_Informacion
                 + "\n Contacto_Telefonico " + Contacto_Telefonico
                 + "\n Cita_Virtual " + Cita_Virtual
                 + "\n Contacto_Posterior " + Contacto_Posterior
-                + "\n Otro" + Otro);
+                + "\n Otro" + Otro
+                + "\n Cita Presencial" + Cita_Presencial);
 
     }
 
