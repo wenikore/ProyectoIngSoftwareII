@@ -41,6 +41,12 @@ public class SeguimientosVendedorVmb implements Serializable {
     private ChartSeries seguimientosVendedorData;
     private BarChartModel seguimientosVendedorModel;
     private PieChartModel seguimientosPieChartModel;
+    private int Envio_Informacion;
+    private int Contacto_Telefonico;
+    private int Cita_Virtual;
+    private int Contacto_Posterior;
+    private int Otro;
+    private int Cita_Presencial;
 
     @PostConstruct
     public void init() {
@@ -152,18 +158,19 @@ public class SeguimientosVendedorVmb implements Serializable {
     }
 
     public void clasificarSeguimientos() {
-        int Envio_Informacion = 0;
-        int Contacto_Telefonico = 0;
-        int Cita_Virtual = 0;
-        int Contacto_Posterior = 0;
-        int Otro = 0;
-
+        Envio_Informacion = 0;
+        Contacto_Telefonico = 0;
+        Cita_Virtual = 0;
+        Contacto_Posterior = 0;
+        Otro = 0;
+        Cita_Presencial = 0;
+        
         for (Seguimiento aux : seguimientosVendedor) {
-    
+
             if (aux.getMotivo().equals("Envio_Informacion")) {
                 Envio_Informacion++;
             }
-            if (aux.getMotivo().equals("Contacto_Telefonico")) {
+            if (aux.getMotivo().equals("Contacto_Telefonico") || aux.getMotivo().equals("Contacto_Telefónico")) {
                 Contacto_Telefonico++;
             }
             if (aux.getMotivo().equals("Cita_Virtual")) {
@@ -177,15 +184,43 @@ public class SeguimientosVendedorVmb implements Serializable {
             if (aux.getMotivo().equals("Otro")) {
                 Otro++;
             }
-        }
- 
 
-        System.out.println("Se encontraron: \n Envio_Informacion" + Envio_Informacion
+            if (aux.getMotivo().equals("Cita_Presencial")) {
+                Cita_Presencial++;
+            }
+    
+}
+
+System.out.println("Se encontraron: \n Envio_Informacion" + Envio_Informacion
                 + "\n Contacto_Telefonico " + Contacto_Telefonico
                 + "\n Cita_Virtual " + Cita_Virtual
                 + "\n Contacto_Posterior " + Contacto_Posterior
                 + "\n Otro" + Otro);
 
+    }
+
+    public int getCita_Presencial() {
+        return Cita_Presencial;
+    }
+
+    public int getEnvio_Informacion() {
+        return Envio_Informacion;
+    }
+
+    public int getContacto_Telefonico() {
+        return Contacto_Telefonico;
+    }
+
+    public int getCita_Virtual() {
+        return Cita_Virtual;
+    }
+
+    public int getContacto_Posterior() {
+        return Contacto_Posterior;
+    }
+
+    public int getOtro() {
+        return Otro;
     }
 
 }
