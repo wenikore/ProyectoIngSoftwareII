@@ -133,7 +133,7 @@
                                         <p>Grafica</p>
                                     </th>
                                     <th>
-                                      
+
                                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                             <p>Valor Relativo</p>
                                         </div>
@@ -141,7 +141,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <canvas id="myChart" class="canvasDoughnut" height="200" width="320" style="margin: 15px 10px 10px 0"></canvas>
+                                        <canvas id="myChart" class="canvasDoughnut" height="150" width="300" style="margin: 15px 10px 10px 0"></canvas>
                                     </td>
                                     <td>
                                         <table class="tile_info">
@@ -191,7 +191,53 @@
 
 
 
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
 
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-8 col-md-offset-2 text-xs-center">
+                                        <center><h3 style="color: #000000; margin-top: 10px" id="objetivo" class="mbr-section-title display-2"></h3></center>
+                                        <div class="lead" style="text-align:center;">
+                                            <p id="cantidad" style="color:#000000">
+
+                                            </p>
+
+                                            <table border="1" style="width: 100%" id="tbTest" >
+                                                <tr>
+                                                    <td style="text-align: center; font-weight: bold; padding: 1em">
+                                                        Nombre
+                                                    </td>
+                                                    <td style="text-align: center; font-weight: bold; padding: 1em">
+                                                        Apellido
+                                                    </td>
+                                                    <td style="text-align: center; font-weight: bold; padding: 1em">
+                                                        Telefono
+                                                    </td>
+                                                    <td style="text-align: center; font-weight: bold; padding: 1em">
+                                                        Email
+                                                    </td>
+
+                                                </tr>
+
+
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
             </div>
 
 
@@ -239,7 +285,7 @@
 //                console.log("contacto_Telefonico "+ "#{seguimientosVendedorVmb.contacto_Telefonico}");
 //                console.log("envio_Informacion "+"#{seguimientosVendedorVmb.envio_Informacion}");
 //                console.log("otro "+ "#{seguimientosVendedorVmb.otro}");
-
+                
                 var data = {
                     datasets: [{
                             data: [#{seguimientosVendedorVmb.contacto_Posterior},
@@ -265,7 +311,7 @@
                         "Envio Informacion"]
                 }
                 ;
-
+                
                 $(document).ready(
                         function () {
                             var canvas = document.getElementById("myChart");
@@ -274,22 +320,25 @@
                                 type: 'doughnut',
                                 data: data
                             });
-
+                            
                             canvas.onclick = function (evt) {
                                 var activePoints = myNewChart.getElementsAtEvent(evt);
                                 var chartData = activePoints[0]['_chart'].config.data;
                                 var idx = activePoints[0]['_index'];
-
+                                
                                 var etiqueta = chartData.labels[idx];
                                 var valor = chartData.datasets[0].data[idx];
-
-                                alert("la etiqueta es : "+ etiqueta + "y el valor es: " +valor);
+                                
+                                
+                                $("#objetivo").text(etiqueta);
+                                
+                                $('#myModal').modal('show')
                             };
                         }
                 );
-
+                
 //                
-
+                
             </script>
         </h:form> 
 
