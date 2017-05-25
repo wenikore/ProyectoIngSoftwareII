@@ -47,6 +47,13 @@ public class SeguimientosVendedorVmb implements Serializable {
     private int Contacto_Posterior;
     private int Otro;
     private int Cita_Presencial;
+    private String ListaCita_Presencial = "";
+    private String ListaOtro = "";
+    private String ListaContacto_posterior = "";
+    private String ListaCita_virtual = "";
+    private String ListaContacto_telefonico = "";
+    private String ListaEnvio_Informacion = "";
+    
 
     @PostConstruct
     public void init() {
@@ -165,27 +172,53 @@ public class SeguimientosVendedorVmb implements Serializable {
         Otro = 0;
         Cita_Presencial = 0;
         
+        
         for (Seguimiento aux : seguimientosVendedor) {
-            System.out.println(aux.getMotivo());
+            System.out.println(aux.getContacto().getPersona());
+            
             if (aux.getMotivo().equals("Envio_Informacion") || aux.getMotivo().equals("Envío_Informacion")) {
+                ListaEnvio_Informacion += "*"+aux.getContacto().getPersona().getPrimerNombre() +"-"
+                        +aux.getContacto().getPersona().getPrimerApellido() +"-"
+                        +aux.getContacto().getPersona().getTelefonoFijo() + "-" 
+                        +aux.getContacto().getPersona().getEmail();
                 Envio_Informacion++;
             }
             if (aux.getMotivo().equals("Contacto_Telefonico") || aux.getMotivo().equals("Contacto_Telefónico")) {
+                 ListaContacto_telefonico += "*"+aux.getContacto().getPersona().getPrimerNombre() +"-"
+                        +aux.getContacto().getPersona().getPrimerApellido() +"-"
+                        +aux.getContacto().getPersona().getTelefonoFijo() + "-" 
+                        +aux.getContacto().getPersona().getEmail();
                 Contacto_Telefonico++;
             }
             if (aux.getMotivo().equals("Cita_Virtual")) {
+                 ListaCita_virtual += "*"+aux.getContacto().getPersona().getPrimerNombre() +"-"
+                        +aux.getContacto().getPersona().getPrimerApellido() +"-"
+                        +aux.getContacto().getPersona().getTelefonoFijo() + "-" 
+                        +aux.getContacto().getPersona().getEmail();
                 Cita_Virtual++;
             }
 
             if (aux.getMotivo().equals("Contacto_Posterior")) {
+                 ListaContacto_posterior += "*"+aux.getContacto().getPersona().getPrimerNombre() +"-"
+                        +aux.getContacto().getPersona().getPrimerApellido() +"-"
+                        +aux.getContacto().getPersona().getTelefonoFijo() + "-" 
+                        +aux.getContacto().getPersona().getEmail();
                 Contacto_Posterior++;
             }
 
             if (aux.getMotivo().equals("Otro")) {
+                 ListaOtro += "*"+aux.getContacto().getPersona().getPrimerNombre() +"-"
+                        +aux.getContacto().getPersona().getPrimerApellido() +"-"
+                        +aux.getContacto().getPersona().getTelefonoFijo() + "-" 
+                        +aux.getContacto().getPersona().getEmail();
                 Otro++;
             }
 
             if (aux.getMotivo().equals("Cita_Presencial")) {
+                 ListaCita_Presencial += "*"+aux.getContacto().getPersona().getPrimerNombre() +"-"
+                        +aux.getContacto().getPersona().getPrimerApellido() +"-"
+                        +aux.getContacto().getPersona().getTelefonoFijo() + "-" 
+                        +aux.getContacto().getPersona().getEmail();
                 Cita_Presencial++;
             }
     
@@ -199,6 +232,7 @@ System.out.println("Se encontraron: \n Envio_Informacion" + Envio_Informacion
                 + "\n Cita Presencial" + Cita_Presencial);
 
     }
+    
 
     public int getCita_Presencial() {
         return Cita_Presencial;
@@ -222,6 +256,30 @@ System.out.println("Se encontraron: \n Envio_Informacion" + Envio_Informacion
 
     public int getOtro() {
         return Otro;
+    }
+    
+        public String getListaCita_Presencial() {
+        return ListaCita_Presencial;
+    }
+
+    public String getListaOtro() {
+        return ListaOtro;
+    }
+
+    public String getListaContacto_posterior() {
+        return ListaContacto_posterior;
+    }
+
+    public String getListaCita_virtual() {
+        return ListaCita_virtual;
+    }
+
+    public String getListaContacto_telefonico() {
+        return ListaContacto_telefonico;
+    }
+
+    public String getListaEnvio_Informacion() {
+        return ListaEnvio_Informacion;
     }
 
 }

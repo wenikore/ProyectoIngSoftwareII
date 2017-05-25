@@ -7,9 +7,13 @@
             <file>file:/C:/Users/Andrés/Desktop/Proyecto%20Ing/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/src/java/co/crm/vmb/ListaSupervisoresVmb.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/samuel/Desktop/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/src/java/co/crm/vmb/SeguimientosVendedorVmb.java</file>
             <file>file:/C:/Users/samuel/Desktop/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/templates/header-metrics.xhtml</file>
+            <file>file:/C:/Users/samuel/Desktop/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/administracion/menuAdministracion.xhtml</file>
             <file>file:/C:/Users/samuel/Desktop/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/vendedor/seguimientosVendedor.xhtml</file>
+            <file>file:/C:/Users/samuel/Desktop/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/administracion/listaSupervisores.xhtml</file>
+            <file>file:/C:/Users/samuel/Desktop/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/templates/header.xhtml</file>
+            <file>file:/C:/Users/samuel/Desktop/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/vendedor/menuVendedor.xhtml</file>
+            <file>file:/C:/Users/samuel/Desktop/ProyectoIngSoftwareII/Aplicación/CRM/CRM-war/web/supervisor/menuSupervisor.xhtml</file>
         </group>
     </open-files>
 </project-private>

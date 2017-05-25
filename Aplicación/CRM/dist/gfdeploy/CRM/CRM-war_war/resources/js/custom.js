@@ -6,6 +6,17 @@
  *     // code here
  * });
  */
+
+//                console.log("#{seguimientosVendedorVmb.cantidadSeguimientos()}");
+//                console.log("cita_Presencial "+"#{seguimientosVendedorVmb.cita_Presencial}");
+//                console.log("cita_Virtual "+"#{seguimientosVendedorVmb.cita_Virtual}");
+//                console.log("contacto_Posterior "+"#{seguimientosVendedorVmb.contacto_Posterior}");
+//                console.log("contacto_Telefonico "+ "#{seguimientosVendedorVmb.contacto_Telefonico}");
+//                console.log("envio_Informacion "+"#{seguimientosVendedorVmb.envio_Informacion}");
+//                console.log("otro "+ "#{seguimientosVendedorVmb.otro}");
+
+  
+
 (function($,sr){
     // debouncing function from John Hann
     // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
@@ -5064,6 +5075,8 @@ if (typeof NProgress != 'undefined') {
 		init_CustomNotification();
 		init_autosize();
 		init_autocomplete();
+                
+                
 				
 	});	
 	
